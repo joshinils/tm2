@@ -83,6 +83,7 @@
 \newcommand{\dashfill}[1]{\vspace{11pt}\def\dashfill{\cleaders\hbox{#1}\hfill}\hbox to \hsize{\dashfill\hfil}\vspace{11pt}}
 \newcommand{\scdot}{\!\cdot\!}
 
+
 \newcommand{\sig}{\text{signum}}
 \newcommand{\rot}{}
 
@@ -107,7 +108,50 @@
 		&= \underbrace{V}_{Volumen\left[m^3\right]} \cdot \underbrace{\rho}_{Dichte\left[\frac{kg}{m^3}\right]} \cdot g
 	\end{align*}
 	\hrulefill
-
+	\begin{align*}
+		\underbrace{\Delta \ell}_{\text{Verlängerung}\left[m\right]} = \underbrace{\ell}_{\text{belastete Länge} \left[m\right]} - \underbrace{\ell_0}_{\text{Urprungslänge} \left[m\right]}
+	\end{align*}
+	Die Verlängerung $\Delta \ell$ ist $>0$ wenn Das Teil länger wird, daran gezogen wird.\\
+	Die Verlängerung $\Delta \ell$ ist $<0$ wenn Das Teil kürzer wird, daran gedrückt wird.
+	
+	\hrulefill
+	\begin{align*}
+		\underbrace{\varepsilon}_{\text{Dehnung} \left[Einheitslos \; \widehat{=}\; 1\right]} 
+		=
+		\frac{\overbrace{\Delta \ell}^{\text{Verlängerung}\left[m\right]}}{\underbrace{\ell_0}_{\text{Ursprungslänge}\left[m\right]}}
+		= \frac{\ell - \ell_0}{\ell_0}
+	\end{align*}
+	$\varepsilon$ ist die Dehnung als relative Angabe, also in \%.
+	
+	\hrulefill
+	
+	Querdehnung, Änderung der Dicke durch Belastung normal dazu.
+	\begin{align*}
+		\underbrace{\varepsilon_q}_{\text{Querdehnung} \left[1\right]} 
+		=
+		\frac{\overbrace{\Delta d}^{\text{Dickenänderung}\left[m\right]}}{\underbrace{d_0}_{\text{Ursprüngliche Dicke} \left[m\right]}}
+		= \frac{d - d_0}{d_0}
+	\end{align*}	
+	\hrulefill
+	
+	\begin{align*}
+		\underbrace{m}_{\text{Poisson-Zahl}[1]} = \frac{\overbrace{\varepsilon}^{\text{Dehnung} [1]}}{\underbrace{\varepsilon_q}_{\text{Querdehnung}[1]}}
+	\end{align*}
+	Auch als Kehrwert genutzt:
+		\begin{align*}
+		\underbrace{\mu}_{\text{Querzahl oder Querkontraktionszahl}[1]} = \frac{1}{\underbrace{m}_{\text{Poisson-Zahl}[1]}}
+	\end{align*}
+	\hrulefill
+	
+	Hookesches Gesetz:
+	\begin{align*}
+		\underbrace{E}_{\text{Elastizitätsmodul}\left[\frac{N}{mm^2}\right]}
+		=
+		\frac{\overbrace{\sigma}^{\text{Spannung}\left[\frac{N}{mm^2}\right]}}
+		{\underbrace{\varepsilon}_{\text{Dehnung}\left[1\right]}}
+	\end{align*}
+	\hrulefill
+	
 \end{document}
 
 
