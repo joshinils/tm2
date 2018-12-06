@@ -93,25 +93,30 @@
 
 % -----------------------------------------------------------
 \begin{document}
-    \abovedisplayskip = 10pt plus 40pt minus 0pt
-    \belowdisplayskip = 10pt plus 40pt minus 0pt
-    \abovedisplayshortskip = 10pt plus 40pt minus 0pt
-    \belowdisplayshortskip = 10pt plus 40pt minus 0pt
+    \abovedisplayskip = 5pt plus 40pt minus 0pt
+    \belowdisplayskip = 5pt plus 40pt minus 0pt
+    \abovedisplayshortskip = 0pt plus 40pt minus 0pt
+    \belowdisplayshortskip = 0pt plus 40pt minus 0pt
     \pagestyle{fancy}
-
-    \section*{\ueberschrift}
     \begin{align*}
         1 \text{Newton} \coloneqq \frac{kg \cdot \text{meter}}{\text{sekunde}^2}
     \end{align*}
+
     \hrulefill
+    
+    Spannung:
     \begin{align*}
-        \text{Spannung} = \frac{\text{Kraft}}{\text{Fläche}} \leftrightarrow \left[\frac{N}{mm^2}\right]
+        \underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
+        =
+        \frac{\overbrace{F}^{\text{Kraft}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
     \end{align*}
+
     \hrulefill
     \begin{align*}
         \underbrace{F_G}_{\text{Gewichtskraft} [N = \frac{kg m}{s^2}]} &= \underbrace{m}_{Masse\left[kg\right]} \cdot \underbrace{g}_{Fallbeschleunigung \left[\frac{m}{s^2}\right]} \\ 
         &= \underbrace{V}_{Volumen\left[m^3\right]} \cdot \underbrace{\rho}_{Dichte\left[\frac{kg}{m^3}\right]} \cdot g
     \end{align*}
+    
     \hrulefill
     \begin{align*}
         \underbrace{\Delta \ell}_{\text{Verlängerung}\left[m\right]} = \underbrace{\ell}_{\text{belastete Länge} \left[m\right]} - \underbrace{\ell_0}_{\text{Urprungslänge} \left[m\right]}
@@ -127,7 +132,7 @@
         = \frac{\ell - \ell_0}{\ell_0}
     \end{align*}
     $\varepsilon$ ist die Dehnung als relative Angabe, also in \%.
-    
+
     \hrulefill
     
     Querdehnung, Änderung der Dicke durch Belastung normal dazu.
@@ -137,8 +142,8 @@
         \frac{\overbrace{\Delta d}^{\text{Dickenänderung}\left[m\right]}}{\underbrace{d_0}_{\text{Ursprüngliche Dicke} \left[m\right]}}
         = \frac{d - d_0}{d_0}
     \end{align*}    
+
     \hrulefill
-    
     \begin{align*}
         \underbrace{m}_{\text{Poisson-Zahl}[1]} = \frac{\overbrace{\varepsilon}^{\text{Dehnung} [1]}}{\underbrace{\varepsilon_q}_{\text{Querdehnung}[1]}}
     \end{align*}
@@ -146,8 +151,9 @@
         \begin{align*}
         \underbrace{\mu}_{\text{Querzahl oder Querkontraktionszahl}[1]} = \frac{1}{\underbrace{m}_{\text{Poisson-Zahl}[1]}}
     \end{align*}
+
     \hrulefill
-    
+        
     Hookesches Gesetz:
     \begin{align*}
         \underbrace{E}_{\text{Elastizitätsmodul}\left[\frac{N}{mm^2}\right]}
@@ -161,12 +167,36 @@ Umgestellt nach Sigma, übliche Form:
         =
         \varepsilon E
         =
-        \frac{\Delta \ell}{\ell_0}
+        \frac{\Delta \ell}{\ell_0}E
     \end{align*}
     \hrulefill
-    %comment as change
 
-        
+    Wärmespannung:
+    \begin{align*}
+        \underbrace{\Delta \ell}_{\left[ mm \right]}
+        =
+        \underbrace{\ell_0}_{\text{Ursprungslänge}\left[mm\right]} \cdot
+        \underbrace{\alpha_{\ell}}_{\text{Längenausdehnungskoeffizient}\left[\frac{1}{K}\right]} \cdot
+        \underbrace{\Delta T}_{\text{Temperaturunterschied}\left[K\right]} \cdot
+    \end{align*}
+    \hrulefill
+    
+    \pagebreak
+    HA: abgesetzter Torsionsstab
+
+    mit Festeinspannung Wand links.
+    Dann Wand als $A$, mitte (verjünngung) als $B$, rechtes Ende als $C$.
+
+    Durchmesser linkes Teil ist $d_1=60mm$, rechtes Teil $d_2=40mm$.
+
+    Bei $B$ grieft ein Torsionsmoment $M_{t_B} = 3 kNm$ an. und am rechten Ende auch eines: $M_{t_C} = 0,6 kNm$.
+
+    Abstand von $\overline{AB} = l_1 = 1m$, $\overline{BC} = l_2 = 1,5m$.
+
+    $G = 0,8 \cdot 10^5 \nicefrac{N}{mm^2}$
+    
+    \hrulefill
+    
 \end{document}
 
 
