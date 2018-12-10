@@ -1,0 +1,98 @@
+    \abovedisplayskip = 1pt plus 10pt minus 0pt
+    \belowdisplayskip = 1pt plus 10pt minus 0pt
+    \abovedisplayshortskip = 0pt plus 10pt minus 0pt
+    \belowdisplayshortskip = 0pt plus 10pt minus 0pt
+    %\pagestyle{fancy}%
+    \begin{dmath*}[frame]
+        1 \text{Newton} \coloneqq \frac{kg \cdot \text{meter}}{\text{sekunde}^2}
+    \end{dmath*}
+
+    \hrulefill
+    
+    Spannung:
+    \begin{dmath*}[frame]
+        \underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
+        =
+        \frac{\overbrace{F}^{\text{Kraft}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
+    \end{dmath*}
+
+    \hrulefill
+    \begin{dmath*}[frame]
+        \underbrace{F_G}_{\text{Gewichtskraft} [N = \frac{kg m}{s^2}]} = \underbrace{m}_{\text{Masse}\left[kg\right]} \cdot \underbrace{g}_{\text{Fallbeschleunigung} \left[\frac{m}{s^2}\right]}
+        = \underbrace{V}_{\text{Volumen}\left[m^3\right]} \cdot \underbrace{\rho}_{\text{Dichte}\left[\frac{kg}{m^3}\right]} \cdot g
+    \end{dmath*}
+    
+    \hrulefill
+    \begin{dmath*}[frame]
+        \underbrace{\Delta \ell}_{\text{Verlängerung}\left[m\right]} = \underbrace{\ell}_{\text{belastete Länge} \left[m\right]} - \underbrace{\ell_0}_{\text{Urprungslänge} \left[m\right]}
+    \end{dmath*}
+    Die Verlängerung $\Delta \ell$ ist $>0$ wenn Das Teil länger wird, daran gezogen wird.\\
+    Die Verlängerung $\Delta \ell$ ist $<0$ wenn Das Teil kürzer wird, daran gedrückt wird.
+
+    \hrulefill
+    
+    $\varepsilon$ ist die Dehnung als relative Angabe, also in \%.
+    \begin{dmath*}[frame]
+        \underbrace{\varepsilon}_{\text{Dehnung} \left[Einheitslos \; \widehat{=}\; 1\right]} 
+        =
+        \frac{\overbrace{\Delta \ell}^{\text{Verlängerung}\left[m\right]}}{\underbrace{\ell_0}_{\text{Ursprungslänge}\left[m\right]}}
+        = \frac{\ell - \ell_0}{\ell_0}
+    \end{dmath*}
+
+    \hrulefill
+    
+    Querdehnung, Änderung der Dicke durch Belastung normal dazu.
+    \begin{dmath*}[frame]
+        \underbrace{\varepsilon_q}_{\text{Querdehnung} \left[1\right]} 
+        =
+        \frac{\overbrace{\Delta d}^{\text{Dickenänderung}\left[m\right]}}{\underbrace{d_0}_{\text{Ursprüngliche Dicke} \left[m\right]}}
+        = \frac{d - d_0}{d_0}
+    \end{dmath*}    
+
+    \hrulefill
+    \begin{dmath*}[frame]
+        \underbrace{m}_{\text{Poisson-Zahl}[1]} = \frac{\overbrace{\varepsilon}^{\text{Dehnung} [1]}}{\underbrace{\varepsilon_q}_{\text{Querdehnung}[1]}}
+    \end{dmath*}
+    Auch als Kehrwert genutzt:
+    \begin{dmath*}[frame]
+        \underbrace{\mu}_{\text{Querzahl oder Querkontraktionszahl}[1]} = \frac{1}{\underbrace{m}_{\text{Poisson-Zahl}[1]}}
+    \end{dmath*}
+
+    \hrulefill
+        
+    Hookesches Gesetz:
+    \begin{dmath*}[frame]
+        \underbrace{E}_{\text{Elastizitätsmodul}\left[\frac{N}{mm^2}\right]}
+        =
+        \frac{\overbrace{\sigma}^{\text{Spannung}\left[\frac{N}{mm^2}\right]}}
+        {\underbrace{\varepsilon}_{\text{Dehnung}\left[1\right]}}
+    \end{dmath*}
+    Umgestellt nach Sigma, übliche Form:
+    \begin{dmath*}[frame]
+        \sigma
+        =
+        \varepsilon E
+        =
+        \frac{\Delta \ell}{\ell_0}E
+    \end{dmath*}
+    \hrulefill
+
+    Wärmespannung:
+    \begin{dmath*}[frame]
+        \underbrace{\Delta \ell}_{\left[ mm \right]}
+        =
+        \underbrace{\ell_0}_{\text{Ursprungslänge}\left[mm\right]} \cdot
+        \underbrace{\alpha_{\ell}}_{\text{Längenausdehnungskoeffizient}\left[\frac{1}{K}\right]} \cdot
+        \underbrace{\Delta T}_{\text{Temperaturunterschied}\left[K\right]} \cdot
+    \end{dmath*}
+    \hrulefill
+
+    Abscherspannung: (Ananlog Spannung $\sigma$, auch Abscherspannung genannt)
+    \begin{dmath*}[frame]
+        \underbrace{\tau}_{\text{Abscherspannung}\left[\frac{N}{mm^2}\right]}
+        =
+        \frac{\overbrace{F_q}^{\text{Querkraft}\left[N\right]}}
+             {\underbrace{A}_{\text{Querschnittsfläche}\left[mm^2\right]}}
+    \end{dmath*}
+    
+    \hrulefill
