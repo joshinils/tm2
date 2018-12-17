@@ -1,0 +1,304 @@
+2018-12-17  joshua  <nils@niels4>
+
+	*  (subsection*{1.3 Stoffgesetz}):
+	
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb, a4, verbatim}
+\usepackage[german]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc} % üöäß
+\usepackage{listings} % für inline codelistings
+\lstset{%
+    basicstyle=\ttfamily,    % the size of the fonts
+    columns=fixed,            % anything else is horrifying
+    showspaces=false,        % show spaces using underscores?
+    showstringspaces=false,    % underline spaces within strings?
+    showtabs=false,            % show tabs within strings?
+    xleftmargin=1.5em,        % left margin space
+}
+\lstdefinestyle{inline}{basicstyle=\ttfamily}
+\newcommand{\listline}[1]{\lstinline[style=inline]!#1!}
+
+\usepackage{caption}
+\newcommand{\tinycaption}[1]{\captionsetup{labelformat=empty}\caption{#1}}
+
+%\usepackage{color}
+%\usepackage{epsfig} % eps
+\usepackage{graphicx} % eps
+%\usepackage[shortcuts]{extdash}
+%\usepackage{dsfont}
+%\usepackage{epstopdf} % eps
+%\usepackage[pdf]{pstricks} % eps
+%\usepackage{auto-pst-pdf}
+\usepackage{mathtools}
+\usepackage{dsfont} % $ \mathds{1} $
+\usepackage{icomma}
+\usepackage{tikz}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.8}
+\usepackage[bottom]{footmisc} % put footnotes at the bottom of page
+\usepackage{nicefrac} % für brüche die aussehen wie prozentzeichen
+% \usepackage{ps2pdf}
+\usetikzlibrary{automata,positioning}
+
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\usepackage{multicol}
+\usepackage{wrapfig} % make stuff float
+\usepackage{placeins} % stop stuff from floating
+\usepackage{seqsplit} % very long numbers
+\usepackage{framed} % begin{framed}
+
+%  Headings and Footings :
+\usepackage{fancyhdr}
+\headheight15pt
+\lhead{Technische Mechanik II, \ueberschrift}
+
+\chead{}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{.4pt}
+
+\lfoot{\today}
+\cfoot{}
+\rfoot{Joshua}
+\renewcommand{\footrulewidth}{.4pt}
+
+%----------------------------------------------------------------
+
+\textwidth16.5cm
+\oddsidemargin0.cm
+\evensidemargin0.cm
+
+\parindent0cm
+
+\newcommand{\R}{ {\mathbb R} }
+\newcommand{\C}{ {\mathbb C} }
+\newcommand{\1}{ {\mathds{1}} }
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\xt}{\tilde{x}}
+\newcommand{\dotleq}{\dot{\leq}}
+\newcommand{\m}{\hphantom{-} }
+
+\newcommand{\dashfill}[1]{\vspace{11pt}\def\dashfill{\cleaders\hbox{#1}\hfill}\hbox to \hsize{\dashfill\hfil}\vspace{11pt}}
+\newcommand{\scdot}{\!\cdot\!}
+
+
+\newcommand{\sig}{\text{signum}}
+\newcommand{\rot}{}
+
+% ------------------  edit Ueberschrift ---------------------
+\newcommand{\ueberschrift}{TM II Notizen}
+
+
+\usepackage{mathtools}
+\usepackage{ragged2e}
+\newlength\ubwidth
+\newlength\obwidth
+\newcommand\underbraceWrap[3][0pt]
+{
+  \settowidth\ubwidth{$#1$}
+  \underbrace{#2}_
+  {
+    \parbox
+      {
+        \maxof{\ubwidth}{\numexpr#1}
+      }
+      {
+        \scriptsize\Centering#3
+      }
+  }
+}
+\newcommand\overbraceWrap[3][0pt]
+{
+  \settowidth\obwidth{$#1$}
+  \overbrace{#2}^
+    {
+      \parbox
+        {
+          \maxof{\obwidth}{\numexpr#1}
+        }
+        {
+          \scriptsize\Centering#3
+        }
+    }
+}
+
+% -----------------------------------------------------------
+\begin{document}
+    \abovedisplayskip = 5pt plus 40pt minus 0pt
+    \belowdisplayskip = 5pt plus 40pt minus 0pt
+    \abovedisplayshortskip = 0pt plus 40pt minus 0pt
+    \belowdisplayshortskip = 0pt plus 40pt minus 0pt
+    \pagestyle{fancy}
+    \subsection*{1.1 Spannung}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.1}
+        \begin{split}
+          \underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
+          =
+          \frac{\overbrace{N}^{\text{Normalspannung}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.2}
+        \begin{split}
+          \underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
+          =
+          \frac{\overbrace{F}^{\text{Kraft}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.3}
+        \begin{split}
+          \sigma
+          =
+          \frac{\overbraceWrap[95pt]{\sigma_0}{Normalspannung in einem Schnitt Senkrecht zur Stabachse}}{2}
+          \left(1 + \cos 2 \phi\right)
+          ,&
+          \tau
+          =
+          \frac{\sigma_0}{2}
+          \left(\sin 2 \phi\right)
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.4}
+        \begin{split}
+          \sigma(x)
+          =
+          \frac{N(x)}{A(x)}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.5}
+        \begin{split}
+          A_{\text{erf}}
+          =
+          \frac{\abs{N}}{\sigma_{\text{zul}}}
+        \end{split}
+      }
+    \end{equation}
+
+    \subsection*{1.2 Dehnung}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.6}
+        \begin{split}
+          \underbrace{\varepsilon}_{\text{Dehnung} \left[1\right]} 
+          =
+          \frac{\overbrace{\Delta \ell}^{\text{Verlängerung}\left[m\right]}}
+               {\underbraceWrap[50pt]{\ell_0}{Ursprüngliche Länge $\left[m\right]$}}
+          =
+          \frac{\ell - \ell_0}{\ell_0}
+        \end{split}
+      }
+    \end{equation}
+
+
+    Örtliche (lokale Dehnung)
+    \begin{equation}
+      \boxed{
+        \tag{1.7}
+        \begin{split}
+          \varepsilon(x)
+          =
+          \frac{\text{d}u}
+               {\text{d}x}
+        \end{split}
+      }
+    \end{equation}
+
+
+    \subsection*{1.3 Stoffgesetz}
+
+    Hooke'sches Gesetz
+    \begin{equation}
+      \boxed{
+        \tag{1.8}
+        \begin{split}
+          \underbraceWrap[60pt]{E}{Elastizitätsmodul $\left[\frac{N}{mm^2}\right]$}
+          =
+          \frac{\overbrace{\sigma}^{\text{Spannung}\left[\frac{N}{mm^2}\right]}}
+               {\underbrace{\varepsilon}_{\text{Dehnung}\left[1\right]}}
+        \end{split}
+      }
+    \end{equation}
+
+    Umgestellt nach Sigma, übliche Form:
+    \begin{equation*}
+        \begin{split}
+          \sigma
+          =
+          E \varepsilon
+          =
+          \frac{\Delta \ell}{\ell_0} E
+        \end{split}
+    \end{equation*}
+
+    
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
