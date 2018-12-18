@@ -1,7 +1,3 @@
-2018-12-17  joshua  <nils@niels4>
-
-	*  (subsection*{1.3 Stoffgesetz}):
-	
 \documentclass[11pt]{article}
 
 \usepackage{amsmath,amssymb, a4, verbatim}
@@ -134,6 +130,7 @@
     \abovedisplayshortskip = 0pt plus 40pt minus 0pt
     \belowdisplayshortskip = 0pt plus 40pt minus 0pt
     \pagestyle{fancy}
+
     \subsection*{1.1 Spannung}
 
     \begin{equation}
@@ -254,7 +251,270 @@
         \end{split}
     \end{equation*}
 
+    \begin{equation}
+      \boxed{
+        \tag{1.9}
+        \begin{split}
+          \underbrace{\varepsilon}_{\text{Dehnung} \left[1\right]}
+          =
+          \frac{\sigma}{E}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.10}
+        \begin{split}
+          \underbrace{\varepsilon_T}_{\text{Wärmedehnung} \left[1\right]}
+          =
+          \underbraceWrap[110pt]
+            {\alpha}
+            {
+              Thermischer Ausdehnungskoeffizient (Wärmeausdehnugnskoeffizient)
+              $\left[
+                \nicefrac{1}
+                         {\,^{\circ}\mathrm{C}}
+              \right]$
+            }
+          \cdot
+          \underbrace{\Delta T}_{\text{Temperaturänderung}\left[\,^{\circ}\mathrm{C}\right]}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.11}
+        \begin{split}
+          \varepsilon
+          =
+          \frac{\sigma}{E}
+          +
+          \alpha_T
+          \Delta T
+        \end{split}
+      }
+    \end{equation}
     
+    \begin{equation}
+      \boxed{
+        \tag{1.12}
+        \begin{split}
+          \sigma
+          =
+          E
+          \left(
+            \varepsilon
+            -
+            \alpha_T
+            \Delta T
+          \right)
+        \end{split}
+      }
+    \end{equation}
+
+
+    \subsection*{1.4 Einzelstab}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.13}
+        \begin{split}
+          \frac{\text{d}N}
+               {\text{d}x}
+          +
+          \underbrace{n}_{\text{Linienkraft}}
+          =
+          0
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.14}
+        \begin{split}
+          \frac{\text{d}u}
+               {\text{d}x}
+          =
+          \frac{N}{EA}
+          +
+          \alpha_T \Delta T
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.15}
+        \begin{split}
+          \Delta \ell
+          =
+          u(l)
+          -
+          u(0)
+          =
+          \int_{0}^{\ell}
+          \varepsilon
+          \text{d}x
+        \end{split}
+      }
+    \end{equation}
+     
+    \begin{equation}
+      \boxed{
+        \tag{1.16}
+        \begin{split}
+          \Delta \ell
+          =
+          \int_{0}^{\ell}
+          \left(
+            \frac{N}{EA}
+            +
+            \alpha_T \Delta T
+          \right)
+          \text{d}x
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.17}
+        \begin{split}
+          \Delta \ell
+          =
+          \frac{F\ell}{EA}
+          +
+          \alpha_T \Delta T \ell
+        \end{split}
+      }
+    \end{equation}
+
+
+    Für $\Delta T = 0$
+    \begin{equation}
+      \boxed{
+        \tag{1.18}
+        \begin{split}
+          \Delta \ell
+          =
+          \frac{F\ell}{EA}
+        \end{split}
+      }
+    \end{equation}
+
+    Oder $F = 0$
+    \begin{equation}
+      \boxed{
+        \tag{1.19}
+        \begin{split}
+          \Delta \ell
+          =
+          \alpha_T \Delta T \ell
+        \end{split}
+      }
+    \end{equation}
+    
+    \begin{equation}
+      \boxed{
+        \tag{1.20a}
+        \begin{split}
+          \left(
+            EA u'
+          \right)'
+          =
+          -n
+          +
+          \left(
+            EA \alpha_t \Delta T
+          \right)'
+        \end{split}
+      }
+    \end{equation}
+
+    Sei in 1.20a $EA = const$ und $\Delta T = const$
+    \begin{equation}
+      \boxed{
+        \tag{1.20b}
+        \begin{split}
+          EA u''
+          =
+          -n
+        \end{split}
+      }
+    \end{equation}
+
+
+    \subsection*{1.5 Statisch bestimmte Stabsysteme}
+
+    \begin{equation}
+      \boxed{
+        \tag{1.21}
+        \begin{split}
+          u
+          &=
+          \abs{\Delta\ell_1}
+          =
+          \frac{F\ell}{EA}
+          \frac{1}{\tan{\alpha}}
+          ,\\
+          v
+          &=
+          \frac{\Delta\ell_2}{\sin{\alpha}}
+          +
+          \frac{u}{\tan{\alpha}}
+          =
+          \frac{F\ell}{EA}
+          \frac{1 + \cos^3\alpha}{\sin^2\alpha \cos \alpha}
+        \end{split}
+      }
+    \end{equation}
+
+
+    \subsection*{1.6 Statisch unbestimmte Stabsysteme}
+
+    \subsection*{1.7 Zusammenfassung}
+    
+    \subsection*{2.1 Spannungvektor und Spannungtensor}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.1}
+        \begin{split}
+          \boldsymbol{t}
+          =
+          \lim_{\Delta A \rightarrow 0}
+          \frac{\Delta \boldsymbol{F}}{\Delta A}
+          =
+          \frac{\text{d}\boldsymbol{F}}{\text{d}A}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.2}
+        \begin{split}
+          \boldsymbol{t}
+          =
+          \tau_{yx} \boldsymbol{e_x}
+          +
+          \sigma_y  \boldsymbol{e_y}
+          +
+          \tau_{yz} \boldsymbol{e_z}
+        \end{split}
+      }
+    \end{equation}
+
+    \[y\mathbf{y}\text{y}\textit{y}\textsf{\textit{y}}\]
+
+    \textit{y}
+    \textit{\textsf{y}}
+    \textsf{y}
+    \textsf{\textit{y}}
+
 \end{document}
 
 
