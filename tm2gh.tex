@@ -32,6 +32,7 @@
 \usepackage{icomma}
 \usepackage{tikz}
 %\usepackage{pgfplots}
+
 %\pgfplotsset{compat=1.8}
 \usepackage[bottom]{footmisc} % put footnotes at the bottom of page
 \usepackage{nicefrac} % für brüche die aussehen wie prozentzeichen
@@ -508,12 +509,175 @@
       }
     \end{equation}
 
-    \[y\mathbf{y}\text{y}\textit{y}\textsf{\textit{y}}\]
+    \begin{equation}
+      \boxed{
+        \tag{2.3}
+        \begin{split}
+          \tau_{xy} = \tau_{yx},
+          \tau_{xz} = \tau_{zx},
+          \tau_{yz} = \tau_{zy}
+        \end{split}
+      }
+    \end{equation}
+    
+    \begin{equation}
+      \boxed{
+        \tag{2.4}
+        \begin{split}
+          \boldsymbol{\sigma}
+          =
+          \begin{bmatrix*}
+            \sigma_{x} & \tau_{xy}  & \tau_{xz} \\
+            \tau_{yx}  & \sigma_{y} & \tau_{yz} \\
+            \tau_{zx}  & \tau_{zy}  & \sigma_{z}
+          \end{bmatrix*}
+          =
+          \begin{bmatrix*}
+            \sigma_{x} & \tau_{xy}  & \tau_{xz} \\
+            \tau_{xy}  & \sigma_{y} & \tau_{yz} \\
+            \tau_{xz}  & \tau_{yz}  & \sigma_{z}
+          \end{bmatrix*}          
+        \end{split}
+      }
+    \end{equation}
 
-    \textit{y}
-    \textit{\textsf{y}}
-    \textsf{y}
-    \textsf{\textit{y}}
+    \begin{equation}
+      \boxed{
+        \tag{2.5a}
+        \begin{split}
+          \sigma_{\xi} &= \sigma_x \cos^2 \varphi + \sigma_y \sin^2\varphi + 2 \tau_{xy} \sin\varphi \cos\phi\\
+          \tau_{\xi \eta} &= -(\sigma_x - \sigma_y) \sin \varphi \cos \varphi + \tau_{xy} (\cos^2\varphi - \sin^2\varphi)
+        \end{split}
+      }
+    \end{equation}
+   
+    \begin{equation}
+      \boxed{
+        \tag{2.5b}
+        \begin{split}
+          \sigma_{\eta}
+          =
+          \sigma_{x} \sin^2 \varphi + \sigma_y \cos^2 \varphi - 2 \tau_{xy} \cos\varphi\sin\varphi
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.6}
+        \begin{split}
+          \sigma_{\xi} &= \frac{1}{2} (\sigma_x + \sigma_y) +&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi, \\
+          \sigma_{\eta} &= \frac{1}{2} (\sigma_x + \sigma_y) -&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi,\\
+          \tau_{\xi \eta} &= -&\frac{1}{2}(\sigma_x - \sigma_y) \sin 2 \varphi + \tau_{xy} \cos 2 \varphi,
+        \end{split}
+      }
+    \end{equation}
+    
+    \begin{equation}
+      \boxed{
+        \tag{2.7}
+        \begin{split}
+          \sigma_\xi + \sigma_\eta
+          =
+          \sigma_x + \sigma_y
+        \end{split}
+      }
+    \end{equation}
+    
+    \begin{equation}
+      \boxed{
+        \tag{2.8}
+        \begin{split}
+          \tan 2\varphi^\ast
+          =
+          \frac{2 \tau_{xy}}{\sigma_x - \sigma_y}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.9}
+        \begin{split}
+          \cos 2\varphi^\ast
+          &=
+          \frac{1}{\sqrt{1+ \tan^2 2\varphi^\ast}}
+          &=
+          \frac{\sigma_x - \sigma_y}{\sqrt{(\sigma_x - \sigma_y)^2 + 4 \tau_{xy}^2}} \\
+          \sin 2\varphi^\ast
+          &=
+          \frac{\tan 2\varphi^\ast}{\sqrt{1+ \tan^2 2\varphi^\ast}}
+          &=
+          \frac{2\tau_{xy}}{\sqrt{(\sigma_x - \sigma_y)^2 + 4 \tau_{xy}^2}} \\          
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.10}
+        \begin{split}
+          \sigma_{1,2}
+          =
+          \frac{\sigma_x + \sigma_y}{2}
+          \pm
+          \sqrt{\left(
+            \frac{\sigma_x - \sigma_y}{2}
+            \right)^2
+            +
+            \tau_{xy}^2
+          }
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.11}
+        \begin{split}
+          \tan 2\varphi^{\ast\ast}
+          =
+          -\frac{\sigma_x - \sigma_y}{2 \tau_{xy}}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.12a}
+        \begin{split}
+          \tau_{\text{max}}
+          =
+          \pm
+          \sqrt{(\frac{\sigma_x - \sigma_y}{2})^2 + \tau_{xy}^2}
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.12b}
+        \begin{split}
+          \tau_{\text{max}}
+          =
+          \pm
+          \frac{1}{2}(\sigma_1 -\sigma_2)
+        \end{split}
+      }
+    \end{equation}
+
+    \begin{equation}
+      \boxed{
+        \tag{2.13}
+        \begin{split}
+          \sigma_M
+          =
+          \frac{1}{2}(\sigma_x + \sigma_y)
+          =
+          \frac{1}{2}(\sigma_1 + \sigma_2)
+        \end{split}
+      }
+    \end{equation}
 
 \end{document}
 
