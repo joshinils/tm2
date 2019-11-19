@@ -55,9 +55,12 @@
 \lhead{Technische Mechanik II, \ueberschrift}
 
 \chead{}
-\rhead{\thepage}
+\usepackage{lastpage}
+\rhead{Seite \thepage~von \pageref{LastPage}}
 \renewcommand{\headrulewidth}{.4pt}
 
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{--}
 \lfoot{\today}
 \cfoot{}
 \rfoot{Joshua}
@@ -69,12 +72,12 @@
 \oddsidemargin0.cm
 \evensidemargin0.cm
 
-\def\somedistanceTop{1.5cm}
+\def\somedistanceTop{2cm}
 \def\somedistanceLeft{1cm}
 
-\usepackage{geometry}
+\usepackage[]{geometry}
 \geometry{
-	a5paper,
+	% a5paper,
 	%	total={170mm,257mm},
 	left=\somedistanceLeft,
 	right=\somedistanceLeft,
@@ -103,7 +106,7 @@
 \newcommand{\rot}{}
 
 % ------------------	edit Ueberschrift ---------------------
-\newcommand{\ueberschrift}{TM II Notizen}
+\newcommand{\ueberschrift}{TM II Formeln}
 
 
 \usepackage{mathtools}
@@ -164,11 +167,14 @@
 		\belowdisplayshortskip = 2pt plus 40pt minus 2pt
 		\pagestyle{fancy}
 		
+	\begin{multicols}{2}
 		\tableofcontents
+	\end{multicols}
 		\pagebreak
 		
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
+
 
 		\begin{equation}
 			\boxed{
@@ -939,7 +945,9 @@
 			\boxed{
 				\tag{3.5}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\epsilon_{1,2} = \frac{\epsilon_x + \epsilon_y}{2}
+					\pm
+					\sqrt{\left( \frac{\epsilon_x - \epsilon_y}{2}\right) + \left( \frac{1}{2} \gamma_{xy} \right) }
 				\end{split}
 			}
 		\end{equation}		
@@ -948,7 +956,9 @@
 			\boxed{
 				\tag{3.6a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\epsilon_x = \frac{\partial u}{\partial x}, \quad
+					\epsilon_y = \frac{\partial v}{\partial y}, \quad
+					\epsilon_z = \frac{\partial w}{\partial z}, \quad
 				\end{split}
 			}
 		\end{equation}		
@@ -957,7 +967,9 @@
 			\boxed{
 				\tag{3.6b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\gamma_{xy} = \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}, \quad
+					\gamma_{xz} = \frac{\partial u}{\partial z} + \frac{\partial w}{\partial x}, \quad
+					\gamma_{yz} = \frac{\partial v}{\partial z} + \frac{\partial w}{\partial y}, \quad
 				\end{split}
 			}
 		\end{equation}		
@@ -966,7 +978,19 @@
 			\boxed{
 				\tag{3.7}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\mathbf{\epsilon}
+					=
+					\begin{bmatrix}
+						\epsilon_{x } & \epsilon_{xy} & \epsilon_{xz} \\
+						\epsilon_{yx} & \epsilon_{y } & \epsilon_{yz} \\
+						\epsilon_{zx} & \epsilon_{zy} & \epsilon_{z } 
+					\end{bmatrix}
+					=
+					\begin{bmatrix}
+						\epsilon_x & \frac{1}{2}\gamma_{xy} & \frac{1}{2}\gamma_{xz}\\
+						\frac{1}{2}\gamma_{xy} & \epsilon_x & \frac{1}{2}\gamma_{yz}\\
+						\frac{1}{2}\gamma_{xz} & \frac{1}{2}\gamma_{yz} & \epsilon_z
+					\end{bmatrix}
 				\end{split}
 			}
 		\end{equation}
@@ -1014,9 +1038,9 @@
 			\boxed{
 				\tag{3.12a}
 				\begin{split}
-					\varepsilon_x &= \frac{1}{E}\left(\sigma_x - \eta \sigma_x\right),
+					\varepsilon_x &= \frac{1}{E}\left(\sigma_x - \nu \sigma_y\right)
 					\\
-					\varepsilon_y &= \frac{1}{E}\left(\sigma_y - \eta \sigma_x\right),
+					\varepsilon_y &= \frac{1}{E}\left(\sigma_y - \nu \sigma_x\right)
 					\\
 			\gamma_{xy} &= \frac{1}{G}\tau_{xy}
 				\end{split}
@@ -1027,7 +1051,9 @@
 			\boxed{
 				\tag{3.12b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma_x &= \frac{E}{1 - \nu^2}(\epsilon_x + \nu \epsilon_y) \\
+					\sigma_y &= \frac{E}{1 -\nu^2}(\epsilon_y - \nu \epsilon_x) \\
+					\tau_{xy} &= G \gamma_{xy}
 				\end{split}
 			}
 		\end{equation}
@@ -1036,7 +1062,7 @@
 			\boxed{
 				\tag{3.13}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\epsilon_1 = \frac{1}{E}(\sigma_1 -\nu\sigma_2), \quad \epsilon_2 = \frac{1}{E}(\sigma_2 -\nu\sigma_1)
 				\end{split}
 			}
 		\end{equation}
@@ -1045,7 +1071,11 @@
 			\boxed{
 				\tag{3.14}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\varepsilon_x &= \frac{1}{E}\left[\sigma_x -\nu   \left(\sigma_y + \sigma_z\right)\right] + \alpha_T\Delta T
+					\\
+					\varepsilon_y &= \frac{1}{E}\left[\sigma_y -\nu   \left(\sigma_z + \sigma_x\right)\right] + \alpha_T\Delta T\\
+					\varepsilon_z &= \frac{1}{E}\left[\sigma_z -\nu   \left(\sigma_x + \sigma_y\right)\right] + \alpha_T\Delta T\\
+					\gamma_{xy} &= \frac{1}{G}\tau_{xy}, \quad \gamma_{xz} = \frac{1}{G}\tau_{xz}, \quad \gamma_{yz} = \frac{1}{G}\tau_{yz}
 				\end{split}
 			}
 		\end{equation}
@@ -1056,7 +1086,7 @@
 			\boxed{
 				\tag{3.15}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma_V \leq \sigma_{zul}
 				\end{split}
 			}
 		\end{equation}
@@ -1065,7 +1095,7 @@
 			\boxed{
 				\tag{3.16}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma_V= \sigma_1
 				\end{split}
 			}
 		\end{equation}
@@ -1074,7 +1104,7 @@
 			\boxed{
 				\tag{3.17}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma_V= \sqrt{ \left( \sigma_x - \sigma_y \right)^2 + 4\tau^2_{xy} }
 				\end{split}
 			}
 		\end{equation}
@@ -1083,7 +1113,7 @@
 			\boxed{
 				\tag{3.18}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma_V= \sqrt{\sigma_x^2 + \sigma_y^2 -\sigma_x\sigma_y + 3\tau^2_{xy} }
 				\end{split}
 			}
 		\end{equation}
@@ -1097,7 +1127,7 @@
 			\boxed{
 				\tag{4.1}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma(z) = c z
 				\end{split}
 			}
 		\end{equation}
@@ -1115,7 +1145,7 @@
 			\boxed{
 				\tag{4.3}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I = \int z^2 \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1124,7 +1154,7 @@
 			\boxed{
 				\tag{4.4}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma = \frac{M}{I} z
 				\end{split}
 			}
 		\end{equation}
@@ -2226,7 +2256,6 @@
 		\subsection{Reine Biegung}
 		\subsection{Biegung und Zug/Druck}
 		\subsection{Zusammenfassung}
-	
 \end{document}
 
 
