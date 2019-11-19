@@ -69,7 +69,22 @@
 \oddsidemargin0.cm
 \evensidemargin0.cm
 
+\def\somedistanceTop{1.5cm}
+\def\somedistanceLeft{1cm}
+
+\usepackage{geometry}
+\geometry{
+	a5paper,
+	%	total={170mm,257mm},
+	left=\somedistanceLeft,
+	right=\somedistanceLeft,
+	top=\somedistanceTop,
+	bottom=\somedistanceTop
+}
+
+
 \parindent0cm
+
 
 \newcommand{\R}{ {\mathbb R} }
 \newcommand{\C}{ {\mathbb C} }
@@ -124,15 +139,36 @@
 		}
 }
 
+\newcommand{\td}{\,\text{d}}
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi    }{\varphi    }
+\renewcommand{\theta  }{\vartheta  }
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
 % -----------------------------------------------------------
 \begin{document}
-		\abovedisplayskip = 5pt plus 40pt minus 0pt
-		\belowdisplayskip = 5pt plus 40pt minus 0pt
-		\abovedisplayshortskip = 0pt plus 40pt minus 0pt
-		\belowdisplayshortskip = 0pt plus 40pt minus 0pt
+		\abovedisplayskip = 5pt plus 40pt minus 5pt
+		\belowdisplayskip = 5pt plus 40pt minus 5pt
+		\abovedisplayshortskip = 2pt plus 40pt minus 2pt
+		\belowdisplayshortskip = 2pt plus 40pt minus 2pt
 		\pagestyle{fancy}
-
-		\subsection*{1.1 Spannung}
+		
+		\tableofcontents
+		\pagebreak
+		
+		\section{Zug und Druck in Stäben}
+		\subsection{Spannung} % 1.1
 
 		\begin{equation}
 			\boxed{
@@ -163,12 +199,12 @@
 					\sigma
 					=
 					\frac{\overbraceWrap[95pt]{\sigma_0}{Normalspannung in einem Schnitt Senkrecht zur Stabachse}}{2}
-					\left(1 + \cos 2 \phi\right)
+					\left(1 + \cos 2 \varphi\right)
 					,&
 					\tau
 					=
 					\frac{\sigma_0}{2}
-					\left(\sin 2 \phi\right)
+					\left(\sin 2 \varphi\right)
 				\end{split}
 			}
 		\end{equation}
@@ -195,7 +231,7 @@
 			}
 		\end{equation}
 
-		\subsection*{1.2 Dehnung}
+		\subsection{Dehnung} % 1.2
 
 		\begin{equation}
 			\boxed{
@@ -226,7 +262,7 @@
 		\end{equation}
 
 
-		\subsection*{1.3 Stoffgesetz}
+		\subsection{Stoffgesetz}
 
 		Hooke'sches Gesetz
 		\begin{equation}
@@ -316,7 +352,7 @@
 		\end{equation}
 
 
-		\subsection*{1.4 Einzelstab}
+		\subsection{Einzelstab}
 
 		\begin{equation}
 			\boxed{
@@ -448,7 +484,7 @@
 		\end{equation}
 
 
-		\subsection*{1.5 Statisch bestimmte Stabsysteme}
+		\subsection{Statisch bestimmte Stabsysteme}
 
 		\begin{equation}
 			\boxed{
@@ -474,11 +510,12 @@
 		\end{equation}
 
 
-		\subsection*{1.6 Statisch unbestimmte Stabsysteme}
+		\subsection{Statisch unbestimmte Stabsysteme}
 
-		\subsection*{1.7 Zusammenfassung}
+		\subsection{Zusammenfassung}
 		
-		\subsection*{2.1 Spannungvektor und Spannungtensor}
+		\section{Spannungszustand}
+		\subsection{Spannungvektor und Spannungtensor}
 
 		\begin{equation}
 			\boxed{
@@ -541,15 +578,15 @@
 			}
 		\end{equation}
 
-		\subsection*{2.2 Ebener Spannungszustand}
+		\subsection{Ebener Spannungszustand}
 		
-		\subsection*{2.2.1 Koordinatentransformation}
+		\subsubsection{Koordinatentransformation}
 
 		\begin{equation}
 			\boxed{
 				\tag{2.5a}
 				\begin{split}
-					\sigma_{\xi} &= \sigma_x \cos^2 \varphi + \sigma_y \sin^2\varphi + 2 \tau_{xy} \sin\varphi \cos\phi\\
+					\sigma_{\xi} &= \sigma_x \cos^2 \varphi + \sigma_y \sin^2\varphi + 2 \tau_{xy} \sin\varphi \cos\varphi\\
 					\tau_{\xi \eta} &= -(\sigma_x - \sigma_y) \sin \varphi \cos \varphi + \tau_{xy} (\cos^2\varphi - \sin^2\varphi)
 				\end{split}
 			}
@@ -588,7 +625,7 @@
 			}
 		\end{equation}
 
-		\subsection*{2.2.2 Hauptspannungen}
+		\subsubsection{Hauptspannungen}
 		
 		\begin{equation}
 			\boxed{
@@ -685,7 +722,7 @@
 			}
 		\end{equation}
 
-		\subsection*{2.2.3 Mohrscher Spannungkreis}
+		\subsection{Mohrscher Spannungkreis}
 
 		\begin{equation}
 			\boxed{
@@ -747,7 +784,7 @@
 			}
 		\end{equation}		
 
-		\subsection*{2.2.4 Dünnwandiger Kessel}
+		\subsubsection{Dünnwandiger Kessel}
 
 		\begin{equation}
 			\boxed{
@@ -785,7 +822,7 @@
 			}
 		\end{equation}
 
-		\subsection*{2.3 Gleichgewichtsbedingungen}
+		\subsection{Gleichgewichtsbedingungen}
 
 		\begin{equation}
 			\boxed{
@@ -846,9 +883,10 @@
 			}
 		\end{equation}		
 
-		\subsection*{2.4 Zusammenfassung}
-
-		\subsection*{3.1 Verzerrungszustand}
+		\subsection{Zusammenfassung}
+		
+		\section{Verzerrungszustand, Elastizitätsgesetze}
+		\subsection{Verzerrungszustand}
 
 		\begin{equation}
 			\boxed{
@@ -933,7 +971,7 @@
 			}
 		\end{equation}
 
-		\subsection*{3.2 Elastizitätsgesetz}
+		\subsection{Elastizitätsgesetz}
 
 		\begin{equation}
 			\boxed{
@@ -1012,7 +1050,7 @@
 			}
 		\end{equation}
 
-		\subsection*{3.4 Festigkeitshypothesen}
+		\subsection{Festigkeitshypothesen}
 
 		\begin{equation}
 			\boxed{
@@ -1050,9 +1088,10 @@
 			}
 		\end{equation}
 
-		\subsection*{3.4 Zusammenfassung}
+		\subsection{Zusammenfassung}
 
-		\subsection*{4.1 Einführung}
+		\section{Balkenbiegung}
+		\subsection{Einführung}
 
 		\begin{equation}
 			\boxed{
@@ -1090,8 +1129,8 @@
 			}
 		\end{equation}
 
-		\subsection*{4.2 Flächenträgheitsmomente}
-		\subsection*{4.2.1 Definition}
+		\subsection{Flächenträgheitsmomente}
+		\subsubsection{Definition}
 
 		\begin{equation}
 			\boxed{
@@ -1127,7 +1166,7 @@
 			\boxed{
 				\tag{4.6b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_{yz} = I_{zy} = -\!\int\! y z\, \text{d}A
 				\end{split}
 			}
 		\end{equation}
@@ -1136,7 +1175,7 @@
 			\boxed{
 				\tag{4.6c}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_p = \int r^2 \,\text{d}A = \int\! \left( z^2 + y^2  \right)\,\text{d}A = I_y + I_z
 				\end{split}
 			}
 		\end{equation}
@@ -1145,138 +1184,144 @@
 			\boxed{
 				\tag{4.7}
 				\begin{split}
+					i = seltsame Wurzel; 
 					\text{da bin ich jetzt zu faul}
 				\end{split}
 			}
 		\end{equation}
 
-		\begin{equation}
-			\boxed{
-				\tag{4.8a}
-				\begin{split}
-					I_y
-					=
-					\int
-					z^2\text{d}A
-					=
-					\int\limits_{-h/2}^{+h/2}z^2(b\, \text{d}z)
-					=
-					\left[\frac{b z^3}{3}\right]
-					\limits_{-h/2}^{+h/2} % fucking limits
-					=
-					\frac{bh^3}{12}
-				\end{split}
-			}
-		\end{equation}
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.8a}
+%				\begin{split}
+%					I_y
+%					=
+%					\int
+%					z^2\text{d}A
+%					=
+%					\int\limits_{-h/2}^{+h/2}z^2(b\, \text{d}z)
+%					=
+%					\left[\frac{b z^3}{3}\right]_{-h/2}^{+h/2} % fucking limits, dont use them !!!
+%					=
+%					\frac{bh^3}{12}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		Für das Rechteck in der Graphik:
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.8b}
+%				\begin{split}
+%					I_z = \frac{h b^3}{12}
+%				\end{split}
+%			}
+%		\end{equation}
+%		
+%		In dem Beispiel wegen der Symmetrieachse:
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.8c}
+%				\begin{split}
+%					I_{yz} = 0
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.8d}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.8e}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.9}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.10a}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.10b}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.10c}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.11}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
+%
+%		\begin{equation}
+%			\boxed{
+%				\tag{4.12}
+%				\begin{split}
+%					\text{da bin ich jetzt zu faul}
+%				\end{split}
+%			}
+%		\end{equation}
 
-		\begin{equation}
-			\boxed{
-				\tag{4.8b}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-		
-		\begin{equation}
-			\boxed{
-				\tag{4.8c}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.8d}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.8e}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.9}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.10a}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.10b}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.10c}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.11}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.12}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\subsection*{4.2.2 Parallelverschiebung der Bezugsachsen}
+		\subsubsection{Parallelverschiebung der Bezugsachsen}
 
 		\begin{equation}
 			\boxed{
 				\tag{4.13}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_{\bar{y}} &= I_y + \bar{z}^2_s A\\
+					I_{\bar{z}} &= I_z + \bar{y}^2_s A\\
+					I_{\bar{y} \bar{z}} &= I_{yz} - \bar{y}_{s} \bar{z}_{s} A
 				\end{split}
 			}
 		\end{equation}
 
-		\subsection*{4.2.3 Drehung des Bezugssystems, Hauptträgheitsmomente}
+		\subsubsection{Drehung des Bezugssystems, Hauptträgheitsmomente}
 
 		\begin{equation}
 			\boxed{
 				\tag{4.14}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_{\eta} &= \frac{1}{2}\left( I_y + I_z \right) &+ \frac{1}{2}\left( I_y - I_z \right)\cos{2\varphi} + I_{yz} \sin{2\varphi}\\
+					I_{\zeta} &= \frac{1}{2}\left( I_y - I_z \right)&-\frac{1}{2}(I_y-I_z)\cos{2\varphi} -I_{yz}\sin{2\varphi}\\
+					I_{\eta \zeta} &=  &-\frac{1}{2}\left( I_y - I_z \right)\sin{2\varphi} + I_{yz}\cos{2\varphi}
 				\end{split}
 			}
 		\end{equation}
@@ -1285,7 +1330,7 @@
 			\boxed{
 				\tag{4.15}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_{\eta} + I_{\zeta} = I_y + I_z = I_p
 				\end{split}
 			}
 		\end{equation}
@@ -1294,7 +1339,7 @@
 			\boxed{
 				\tag{4.16}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\tan{2\varphi^*} = \frac{2 I_{yz}}{I_y - I_z}
 				\end{split}
 			}
 		\end{equation}
@@ -1303,18 +1348,20 @@
 			\boxed{
 				\tag{4.17}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					I_{1,2} = \frac{I_y + I_z}{2}
+					\pm
+					\sqrt{\left(\frac{I_y - I_z}{2}\right)^2 + I_{yz}^2}		
 				\end{split}
 			}
 		\end{equation}
 		
-		\subsection*{4.3 Grundgleichungen der geraden Biegung}
+		\subsection{Grundgleichungen der geraden Biegung}
 
 		\begin{equation}
 			\boxed{
 				\tag{4.18}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\frac{\text{d}Q}{\text{d}x} = -q,\quad \frac{\text{d}M}{\text{d}x} = Q
 				\end{split}
 			}
 		\end{equation}
@@ -1323,7 +1370,7 @@
 			\boxed{
 				\tag{4.19a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M = \int z \sigma \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1333,7 +1380,7 @@
 			\boxed{
 				\tag{4.19b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					Q = \int \tau \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1342,7 +1389,7 @@
 			\boxed{
 				\tag{4.19c}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					N = \int \sigma \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1351,7 +1398,7 @@
 			\boxed{
 				\tag{4.20}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\epsilon = \frac{\partial u}{\partial x}
 				\end{split}
 			}
 		\end{equation}
@@ -1360,7 +1407,7 @@
 			\boxed{
 				\tag{4.21}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma= E\,\epsilon, \quad \tau = G\,\gamma
 				\end{split}
 			}
 		\end{equation}
@@ -1369,7 +1416,7 @@
 			\boxed{
 				\tag{4.22a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega = \omega(x)
 				\end{split}
 			}
 		\end{equation}
@@ -1378,7 +1425,7 @@
 			\boxed{
 				\tag{4.22b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					u(x,z) = \psi(x)z
 				\end{split}
 			}
 		\end{equation}
@@ -1387,7 +1434,7 @@
 			\boxed{
 				\tag{4.23a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma = E\frac{\partial u}{\partial x} = E \psi' z
 				\end{split}
 			}
 		\end{equation}
@@ -1396,7 +1443,7 @@
 			\boxed{
 				\tag{4.23b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\tau = G\left( \frac{\partial \omega}{\partial x} + \frac{\partial u}{\partial z} \right) = G (\omega' + \psi)
 				\end{split}
 			}
 		\end{equation}
@@ -1405,7 +1452,7 @@
 			\boxed{
 				\tag{4.24}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M = E I \psi'
 				\end{split}
 			}
 		\end{equation}
@@ -1414,12 +1461,12 @@
 			\boxed{
 				\tag{4.25}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					Q = \varkappa GA(\omega' +\psi)
 				\end{split}
 			}
 		\end{equation}
 		
-		\subsection*{4.4 Normalspannungen}
+		\subsection{Normalspannungen}
 
 		\begin{equation}
 			\boxed{
@@ -1455,14 +1502,14 @@
 			}
 		\end{equation}
 		
-		\subsection*{4.5 Biegelinie}
-		\subsection*{4.5.1 Differentialgleichung der Biegelinie}
+		\subsection{Biegelinie}
+		\subsubsection{Differentialgleichung der Biegelinie}
 
 		\begin{equation}
 			\boxed{
 				\tag{4.29}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega' + \psi = 0
 				\end{split}
 			}
 		\end{equation}
@@ -1471,7 +1518,7 @@
 			\boxed{
 				\tag{4.30}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					Q' = -q,\quad M' = Q, \quad \psi' = \frac{M}{E I}, \quad \omega' = -\psi
 				\end{split}
 			}
 		\end{equation}
@@ -1480,7 +1527,7 @@
 			\boxed{
 				\tag{4.31}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega'' = -\frac{M}{E I}
 				\end{split}
 			}
 		\end{equation}
@@ -1489,7 +1536,7 @@
 			\boxed{
 				\tag{4.32a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\varkappa_B = \frac{\omega''}{(1 + \omega'^2)^{\nicefrac{3}{2}} }
 				\end{split}
 			}
 		\end{equation}
@@ -1498,7 +1545,7 @@
 			\boxed{
 				\tag{4.32b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\varkappa_B\approx \omega''
 				\end{split}
 			}
 		\end{equation}
@@ -1507,7 +1554,7 @@
 			\boxed{
 				\tag{4.33}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					Q = -(E I \omega'')'
 				\end{split}
 			}
 		\end{equation}
@@ -1516,7 +1563,7 @@
 			\boxed{
 				\tag{4.34a}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					(E I \omega'')'' = q
 				\end{split}
 			}
 		\end{equation}
@@ -1525,22 +1572,22 @@
 			\boxed{
 				\tag{4.34b}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					EI \omega^{I V} = q
 				\end{split}
 			}
 		\end{equation}
 		
-		\subsection*{4.5.2 Einfeldbalken} 
-		\subsection*{4.5.3 Balken mit mehreren Feldern}
-		\subsection*{4.5.4 Superposition}
-		\subsection*{4.6 Einfluss des Schubes}
-		\subsection*{4.6.1 Schubspannungen}
+		\subsubsection{Einfeldbalken} 
+		\subsubsection{Balken mit mehreren Feldern}
+		\subsubsection{Superposition}
+		\subsection{Einfluss des Schubes}
+		\subsubsection{Schubspannungen}
 
 		\begin{equation}
 			\boxed{
 				\tag{4.35}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\frac{\partial \sigma}{\partial x} = \frac{Q}{I} \zeta
 				\end{split}
 			}
 		\end{equation}
@@ -1581,7 +1628,7 @@
 			}
 		\end{equation}
 		
-		\subsection*{4.6.2 Durchbiegung infolge Schub}
+		\subsubsection{Durchbiegung infolge Schub}
 
 		\begin{equation}
 			\boxed{
@@ -1628,7 +1675,7 @@
 			}
 		\end{equation}
 
-		\subsection*{4.7 Schiefe Biegung}
+		\subsection{Schiefe Biegung}
 
 		\begin{equation}
 			\boxed{
@@ -1720,7 +1767,7 @@
 			}
 		\end{equation}
 
-		\subsection*{4.8 Biegung und Zug/Druck}
+		\subsection{Biegung und Zug/Druck}
 
 		\begin{equation}
 			\boxed{
@@ -1740,7 +1787,7 @@
 			}
 		\end{equation}
 		
-		\subsection*{4.9 Kern des Querschnitts}
+		\subsection{Kern des Querschnitts}
 
 		\begin{equation}
 			\boxed{
@@ -1768,7 +1815,7 @@
 				\end{split}
 			}
 		\end{equation}
-		\subsection*{4.10 Temperaturbelastung}
+		\subsection{Temperaturbelastung}
 
 		\begin{equation}
 			\boxed{
@@ -1842,10 +1889,11 @@
 			}
 		\end{equation}
 
-		\subsection*{4.11 Zusammenfassung}
+		\subsection{Zusammenfassung}
 	
-		\subsection*{5.1 Einführung}
-		\subsection*{5.2 Die kreiszylindrische Welle}
+		\section{Torsion}
+		\subsection{Einführung}
+		\subsection{Die kreiszylindrische Welle}
 
 		\begin{equation}
 			\boxed{
@@ -1973,7 +2021,7 @@
 			}
 		\end{equation}
 
-		\subsection*{5.3 Dünnwandige geschlossene Profile}
+		\subsection{Dünnwandige geschlossene Profile}
 
 		\begin{equation}
 			\boxed{
@@ -2101,7 +2149,7 @@
 			}
 		\end{equation}
 
-		\subsection*{5.4 Dünnwandige offene Profile}
+		\subsection{Dünnwandige offene Profile}
 
 		\begin{equation}
 			\boxed{
@@ -2157,24 +2205,27 @@
 			}
 		\end{equation}
 		
-		\subsection*{5.5 Zusammenfassung}	
+		\subsection{Zusammenfassung}	
 
-		\subsection*{6.1 Einleitung}
-		\subsection*{6.2 Arbeitssatz und Formänderungsenergie}
-		\subsection*{6.3 Das Prinzip der virtuellen Kräfte}
-		\subsection*{6.4 Einflusszahlen und Vertauschungssätze}
-		\subsection*{6.5 Anwendung des Arbeitssatzes auf statisch unbestimmte Systeme}
-		\subsection*{6.6 Zusammenfassung}
+		\section{Der Arbeitsbegriff in der Elastostatik}
+		\subsection{Einleitung}
+		\subsection{Arbeitssatz und Formänderungsenergie}
+		\subsection{Das Prinzip der virtuellen Kräfte}
+		\subsection{Einflusszahlen und Vertauschungssätze}
+		\subsection{Anwendung des Arbeitssatzes auf statisch unbestimmte Systeme}
+		\subsection{Zusammenfassung}
 
-		\subsection*{7.1 Verzweigung einer Gleichgewichtslage}
-		\subsection*{7.2 Der Euler-Stab}
-		\subsection*{7.3 Zusammenfassung}
+		\section{Knickung}
+		\subsection{Verzweigung einer Gleichgewichtslage}
+		\subsection{Der Euler-Stab}
+		\subsection{Zusammenfassung}
 	
-		\subsection*{8.1 Einleitung}
-		\subsection*{8.2 Zug und Druck in Stäben}
-		\subsection*{8.3 Reine Biegung}
-		\subsection*{8.4 Biegung und Zug/Druck}
-		\subsection*{8.5 Zusammenfassung}
+		\section{Verbundquerschnitte}
+		\subsection{Einleitung}
+		\subsection{Zug und Druck in Stäben}
+		\subsection{Reine Biegung}
+		\subsection{Biegung und Zug/Druck}
+		\subsection{Zusammenfassung}
 	
 \end{document}
 
