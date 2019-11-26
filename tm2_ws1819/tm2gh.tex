@@ -170,9 +170,12 @@
 		\pagestyle{fancy}
 		
 %	\begin{multicols}{2}
+		\pagenumbering{roman}
 		\tableofcontents
 %	\end{multicols}
 		\pagebreak
+
+		\pagenumbering{arabic}
 		
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
@@ -1629,7 +1632,7 @@
 			\boxed{
 				\tag{4.36}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					S(z) = \int\limits_{A^*} \zeta \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1642,24 +1645,6 @@
 				\end{split}
 			}
 		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.38}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
-
-		\begin{equation}
-			\boxed{
-				\tag{4.39}
-				\begin{split}
-					\text{da bin ich jetzt zu faul}
-				\end{split}
-			}
-		\end{equation}
 		
 		\subsubsection{Durchbiegung infolge Schub}
 
@@ -1667,7 +1652,7 @@
 			\boxed{
 				\tag{4.40}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega' + \psi = \frac{Q}{GA_S}
 				\end{split}
 			}
 		\end{equation}
@@ -1676,7 +1661,7 @@
 			\boxed{
 				\tag{4.41}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega_s' = \frac{Q}{GA_S}
 				\end{split}
 			}
 		\end{equation}
@@ -1685,7 +1670,7 @@
 			\boxed{
 				\tag{4.42}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega' = \omega_B' + \omega_S'
 				\end{split}
 			}
 		\end{equation}
@@ -1694,7 +1679,7 @@
 			\boxed{
 				\tag{4.43}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega = \omega_B + \omega_S
 				\end{split}
 			}
 		\end{equation}
@@ -1703,7 +1688,7 @@
 			\boxed{
 				\tag{4.44}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega_S= \frac{F}{GA_S}x
 				\end{split}
 			}
 		\end{equation}
@@ -1714,7 +1699,7 @@
 			\boxed{
 				\tag{4.45}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma = \frac{M_y}{I_y}z - \frac{M_z}{I_z}y
 				\end{split}
 			}
 		\end{equation}
@@ -1723,7 +1708,7 @@
 			\boxed{
 				\tag{4.46}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\omega'' = \frac{M_y}{EI_y} , \quad \nu '' = \frac{M_z}{EI_z}
 				\end{split}
 			}
 		\end{equation}
@@ -1732,7 +1717,8 @@
 			\boxed{
 				\tag{4.47}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\frac{\td Q_z}{\td x} = -q_z, \quad \frac{\td Q_y}{\td x} &= -q_y\\
+					\frac{\td M_y}{\td x} = Q_z, \quad \frac{\td M_z}{\td x} &= -Q_y
 				\end{split}
 			}
 		\end{equation}
@@ -1741,7 +1727,7 @@
 			\boxed{
 				\tag{4.48}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\epsilon = -\left(\omega'' z + \nu'' y\right)
 				\end{split}
 			}
 		\end{equation}
@@ -1750,7 +1736,7 @@
 			\boxed{
 				\tag{4.49}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\sigma = -E\left(\omega'' z + \nu'' y\right)
 				\end{split}
 			}
 		\end{equation}
@@ -1759,7 +1745,7 @@
 			\boxed{
 				\tag{4.50}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M_y = \int z\sigma\td A , \quad M_z = - \int y \sigma \td A
 				\end{split}
 			}
 		\end{equation}
