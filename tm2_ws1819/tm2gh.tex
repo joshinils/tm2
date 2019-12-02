@@ -142,11 +142,18 @@
 		}
 }
 
+%for use in \int
 \newcommand{\td}{\,\text{d}}
 
+\usepackage{upgreek}
+\usepackage{newtxmath} % greekup
+
+\renewcommand{\alpha  }{\alphaup   }
 \renewcommand{\epsilon}{\varepsilon}
 \renewcommand{\phi    }{\varphi    }
-\renewcommand{\theta  }{\vartheta  }
+\renewcommand{\theta  }{\upvartheta}
+\renewcommand{\gamma  }{\gammaup   }
+\renewcommand{\sigma  }{\sigmaup   }
 
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
@@ -176,11 +183,23 @@
 		\pagebreak
 
 		\pagenumbering{arabic}
-		
+
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
-
-
+		
+		$\alpha$
+		$\beta$
+		$\gamma$
+		$\delta$
+		$\epsilon$
+		$\zeta$
+		$\eta$
+		$\theta$
+		$\iota$
+		$\kappa$
+		$\lambda$
+		$\mu$
+		
 		\begin{equation}
 			\boxed{
 				\tag{1.1}
@@ -1918,16 +1937,17 @@
 			\boxed{
 				\tag{5.1}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					r\td \theta = \gamma \td x \rightarrow \gamma = r\frac{\td \theta}{\td x}
 				\end{split}
 			}
 		\end{equation}
+		Man nennt die Verdrehung pro Längeneinheit $ \td\theta = \td x $ manchmal auch Verwindung $\varkappa_T$.
 		
 		\begin{equation}
 			\boxed{
 				\tag{5.2}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\tau = G r \frac{\td \theta}{\td x} = G r \theta'
 				\end{split}
 			}
 		\end{equation}
@@ -1936,7 +1956,7 @@
 			\boxed{
 				\tag{5.3}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M_T = \int r\theta \td A
 				\end{split}
 			}
 		\end{equation}
@@ -1945,25 +1965,29 @@
 			\boxed{
 				\tag{5.4}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M_T = G\theta' \displaystyle\int r^2 \td A = G \theta' I_p
 				\end{split}
 			}
 		\end{equation}
+		
+		\[\int\]
+		$\int $
 		
 		\begin{equation}
 			\boxed{
 				\tag{5.5}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					GI_T \theta' = M_T
 				\end{split}
 			}
 		\end{equation}
+		Die Größe $GI_T$ heißt Torsionssteifigkeit.
 
 		\begin{equation}
 			\boxed{
 				\tag{5.6}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					M_T = M_x
 				\end{split}
 			}
 		\end{equation}
@@ -1972,7 +1996,7 @@
 			\boxed{
 				\tag{5.7}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\theta_l = \frac{M_T l}{GI_T}
 				\end{split}
 			}
 		\end{equation}
@@ -1981,16 +2005,21 @@
 			\boxed{
 				\tag{5.8}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\tau = \frac{M_T}{I_T}r
 				\end{split}
 			}
 		\end{equation}
-
+		
+		\pagebreak[0]
+		Der Größtwert tritt am Rand $ r = R $ auf: $ \tau_{\text{max}} = \left( M_T / I_T \right) R $.
+		Um
+die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstandsmoment} $ W_T $ ein:
+		\nopagebreak
 		\begin{equation}
 			\boxed{
 				\tag{5.9}
 				\begin{split}
-					\text{da bin ich jetzt zu faul}
+					\tau_{\text{max}} = \frac{M_T}{W_T}
 				\end{split}
 			}
 		\end{equation}
