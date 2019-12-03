@@ -145,19 +145,12 @@
 %for use in \int
 \newcommand{\td}{\,\text{d}}
 
-\usepackage{upgreek}
-\usepackage{newtxmath} % greekup
-
-\renewcommand{\alpha  }{\mathit{\alphaup}   }
-\renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\phi    }{\varphi    }
-\renewcommand{\theta  }{\upvartheta}
-\renewcommand{\gamma  }{\gammaup   }
-\renewcommand{\sigma  }{\sigmaup   }
+\input{tex/greek.tex}
 
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
+% for clickabe stuffs
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks,
@@ -187,31 +180,6 @@
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
 
-\begin{tabular}{cccccccc}
-B 			&vB				&UB				&s			&vs				&su				& us			& uvs				\\
-	(A)		&				&				&$\alpha$	&				&$\alphaup$		&$\upalpha$		&					\\
-	(B)		&				&				&$\beta$	&				&$\betaup$		&$\upbeta$		&					\\
-$\Gamma$	&$\varGamma$	&$\Upgamma$		&$\gamma$	&				&$\gammaup$		&$\upgamma$		&					\\
-$\Delta$	&$\varDelta$	&$\Updelta$		&$\delta$	&				&$\deltaup$		&$\updelta$		&					\\
-	(E)		&				&				&$\epsilon$	&$\varepsilon$	&$\epsilonup$	&$\upepsilon$	&$\upvarepsilon$	\\
-	(Z)		&				&				&$\zeta$	&				&$\zetaup$		&$\upzeta$		&					\\
-	(H)		&				&				&$\eta$		&				&$\etaup$		&$\upeta$		&					\\
-$\Theta$	&$\varTheta$	&$\Uptheta$		&$\theta$	&$\vartheta$	&$\thetaup$		&$\uptheta$		&$\upvartheta$		\\
-	(I)		&				&				&$\iota$	&				&$\iotaup$		&$\upiota$		&					\\
-	(K)		&				&				&$\kappa$	&$\varkappa$	&$\kappaup$		&$\upkappa$		&$\upvarkappa$		\\
-$\Lambda$	&$\varLambda$	&$\Uplambda$	&$\lambda$	&				&$\lambdaup$	&$\uplambda$	&					\\
-	(M)		&				&				&$\mu$		&				&$\muup$		&$\upmu$		&					\\
-	(N)		&				&				&$\nu$		&				&$\nuup$		&$\upnu$		&					\\
-$\Pi$		&$\varPi$		&$\Uppi$		&$\pi$		&$\varpi$		&$\piup$		&$\uppi$		&$\upvarpi$			\\
-	(P)		&				&				&$\rho$		&$\varrho$		&$\rhoup$		&$\uprho$		&$\upvarrho$		\\
-$\Sigma$	&$\varSigma$	&$\Upsigma$		&$\sigma$	&$\varsigma$	&$\sigmaup$		&$\upsigma$		&$\upvarsigma$		\\
-	(T)		&				&				&$\tau$		&				&$\tauup$		&$\uptau$		&					\\
-$\Upsilon$	&$\varUpsilon$	&$\Upupsilon$	&$\upsilon$	&				&$\upsilonup$	&$\upupsilon$	&					\\
-$\Phi$		&$\varPhi$		&$\Upphi$		&$\phi$		&$\varphi$		&$\phiup$		&$\upphi$		&$\upvarphi$		\\
-	(X)		&				&				&$\chi$		&				&$\chiup$		&$\upchi$		&					\\
-$\Psi$		&$\varPsi$		&$\Uppsi$		&$\psi$		&				&$\psiup$		&$\uppsi$		&					\\
-$\Omega$	&$\varOmega$	&$\Upomega$		&$\omega$	&				&$\omegaup$		&$\upomega$		&					\\
-\end{tabular}
 
 		\begin{equation}
 			\boxed{

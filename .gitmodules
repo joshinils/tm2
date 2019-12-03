@@ -1,0 +1,3 @@
+[submodule "tm2_ws1819/tex"]
+	path = tm2_ws1819/tex
+	url = https://github.com/joshinils/tex
