@@ -77,7 +77,7 @@
 
 \usepackage[]{geometry}
 \geometry{
-	a5paper,
+	a4paper, landscape,
 	%	total={170mm,257mm},
 	left=\somedistanceLeft,
 	right=\somedistanceLeft,
@@ -160,28 +160,30 @@
 	urlcolor=black
 }
 
+\usepackage{empheq}
 
 % -----------------------------------------------------------
 \begin{document}
-		\abovedisplayskip = 5pt plus 40pt minus 5pt
-		\belowdisplayskip = 5pt plus 40pt minus 5pt
-		\abovedisplayshortskip = 2pt plus 40pt minus 2pt
-		\belowdisplayshortskip = 2pt plus 40pt minus 2pt
+		\abovedisplayskip = 5pt plus 0pt minus 5pt
+		\belowdisplayskip = 5pt plus 0pt minus 5pt
+		\abovedisplayshortskip = 2pt plus 0pt minus 2pt
+		\belowdisplayshortskip = 2pt plus 0pt minus 2pt
 		\pagestyle{fancy}
 		
-%	\begin{multicols}{2}
+	\begin{multicols}{3}
 		\pagenumbering{roman}
 		\tableofcontents
-%	\end{multicols}
+	\end{multicols}
 		\pagebreak
 
+	\begin{multicols}{2}
 		\pagenumbering{arabic}
 
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
 
-
-		\begin{equation}
+%		\begin{equation}
+		\begin{empheq}[box = \colorbox{green!60!white!50}]{equation}
 			\boxed{
 				\tag{1.1}
 				\begin{split}
@@ -190,8 +192,9 @@
 					\frac{\overbrace{N}^{\text{Normalspannung}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
 				\end{split}
 			}
-		\end{equation}
-
+%		\end{equation}
+		\end{empheq}
+				
 		\begin{equation}
 			\boxed{
 				\tag{1.2}
@@ -209,7 +212,7 @@
 				\begin{split}
 					\sigma
 					=
-					\frac{\overbraceWrap[95pt]{\sigma_0}{Normalspannung in einem Schnitt Senkrecht zur Stabachse}}{2}
+					\frac{\overbraceWrap[95pt]{\sigma_0 = \nicefrac{F}{A}}{Normalspannung in einem Schnitt Senkrecht zur Stabachse}}{2}
 					\left(1 + \cos 2 \varphi\right)
 					,&
 					\tau
@@ -1452,7 +1455,7 @@
 			\boxed{
 				\tag{4.22a}
 				\begin{split}
-					\omega = \omega(x)
+					w = w(x)
 				\end{split}
 			}
 		\end{equation}
@@ -1479,7 +1482,7 @@
 			\boxed{
 				\tag{4.23b}
 				\begin{split}
-					\tau = G\left( \frac{\partial \omega}{\partial x} + \frac{\partial u}{\partial z} \right) = G (\omega' + \psi)
+					\tau = G\left( \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z} \right) = G (w' + \psi)
 				\end{split}
 			}
 		\end{equation}
@@ -1497,7 +1500,7 @@
 			\boxed{
 				\tag{4.25}
 				\begin{split}
-					Q = \varkappa GA(\omega' +\psi)
+					Q = \varkappa GA(w' +\psi)
 				\end{split}
 			}
 		\end{equation}
@@ -1545,7 +1548,7 @@
 			\boxed{
 				\tag{4.29}
 				\begin{split}
-					\omega' + \psi = 0
+					w' + \psi = 0
 				\end{split}
 			}
 		\end{equation}
@@ -1554,7 +1557,7 @@
 			\boxed{
 				\tag{4.30}
 				\begin{split}
-					Q' = -q,\quad M' = Q, \quad \psi' = \frac{M}{E I}, \quad \omega' = -\psi
+					Q' = -q,\quad M' = Q, \quad \psi' = \frac{M}{E I}, \quad w' = -\psi
 				\end{split}
 			}
 		\end{equation}
@@ -1563,7 +1566,7 @@
 			\boxed{
 				\tag{4.31}
 				\begin{split}
-					\omega'' = -\frac{M}{E I}
+					w'' = -\frac{M}{E I}
 				\end{split}
 			}
 		\end{equation}
@@ -1572,7 +1575,7 @@
 			\boxed{
 				\tag{4.32a}
 				\begin{split}
-					\varkappa_B = \frac{\omega''}{(1 + \omega'^2)^{\nicefrac{3}{2}} }
+					\varkappa_B = \frac{w''}{(1 + w'^2)^{\nicefrac{3}{2}} }
 				\end{split}
 			}
 		\end{equation}
@@ -1581,7 +1584,7 @@
 			\boxed{
 				\tag{4.32b}
 				\begin{split}
-					\varkappa_B\approx \omega''
+					\varkappa_B\approx w''
 				\end{split}
 			}
 		\end{equation}
@@ -1590,7 +1593,7 @@
 			\boxed{
 				\tag{4.33}
 				\begin{split}
-					Q = -(E I \omega'')'
+					Q = -(E I w'')'
 				\end{split}
 			}
 		\end{equation}
@@ -1599,7 +1602,7 @@
 			\boxed{
 				\tag{4.34a}
 				\begin{split}
-					(E I \omega'')'' = q
+					(E I w'')'' = q
 				\end{split}
 			}
 		\end{equation}
@@ -1608,13 +1611,28 @@
 			\boxed{
 				\tag{4.34b}
 				\begin{split}
-					EI \omega^{I V} = q
+					EI w^{I V} = q
 				\end{split}
 			}
 		\end{equation}
 		
-		\subsubsection{Einfeldbalken} 
+		\subsubsection{Einfeldbalken}
 		\subsubsection{Balken mit mehreren Feldern}
+
+		Balken mit zwei Feldern. Eingespannt rechts und links, krafteinwirkung dazwischen, bei $a$. 
+		\begin{equation}
+			\boxed{
+				\tag{Momentenverlauf}
+				\begin{split}
+					M(x) = 
+					\begin{cases}
+						F\frac{b}{\ell}x &\text{für} \, 0 \leq x \leq a\\
+						F\frac{a}{\ell}\left(\ell -x\right) &\text{für}\, a \leq x \leq l
+					\end{cases}
+				\end{split}
+			}
+		\end{equation}
+
 		\subsubsection{Superposition}
 		\subsection{Einfluss des Schubes}
 		\subsubsection{Schubspannungen}
@@ -1652,7 +1670,7 @@
 			\boxed{
 				\tag{4.40}
 				\begin{split}
-					\omega' + \psi = \frac{Q}{GA_S}
+					w' + \psi = \frac{Q}{GA_S}
 				\end{split}
 			}
 		\end{equation}
@@ -1661,7 +1679,7 @@
 			\boxed{
 				\tag{4.41}
 				\begin{split}
-					\omega_s' = \frac{Q}{GA_S}
+					w_s' = \frac{Q}{GA_S}
 				\end{split}
 			}
 		\end{equation}
@@ -1670,7 +1688,7 @@
 			\boxed{
 				\tag{4.42}
 				\begin{split}
-					\omega' = \omega_B' + \omega_S'
+					w' = w_B' + w_S'
 				\end{split}
 			}
 		\end{equation}
@@ -1679,7 +1697,7 @@
 			\boxed{
 				\tag{4.43}
 				\begin{split}
-					\omega = \omega_B + \omega_S
+					w = w_B + w_S
 				\end{split}
 			}
 		\end{equation}
@@ -1688,7 +1706,7 @@
 			\boxed{
 				\tag{4.44}
 				\begin{split}
-					\omega_S= \frac{F}{GA_S}x
+					w_S= \frac{F}{GA_S}x
 				\end{split}
 			}
 		\end{equation}
@@ -1708,7 +1726,7 @@
 			\boxed{
 				\tag{4.46}
 				\begin{split}
-					\omega'' = \frac{M_y}{EI_y} , \quad \nu '' = \frac{M_z}{EI_z}
+					w'' = \frac{M_y}{EI_y} , \quad \nu '' = \frac{M_z}{EI_z}
 				\end{split}
 			}
 		\end{equation}
@@ -1727,7 +1745,7 @@
 			\boxed{
 				\tag{4.48}
 				\begin{split}
-					\epsilon = -\left(\omega'' z + \nu'' y\right)
+					\epsilon = -\left(w'' z + \nu'' y\right)
 				\end{split}
 			}
 		\end{equation}
@@ -1736,7 +1754,7 @@
 			\boxed{
 				\tag{4.49}
 				\begin{split}
-					\sigma = -E\left(\omega'' z + \nu'' y\right)
+					\sigma = -E\left(w'' z + \nu'' y\right)
 				\end{split}
 			}
 		\end{equation}
@@ -1977,7 +1995,7 @@
 			\boxed{
 				\tag{5.7}
 				\begin{split}
-					\theta_l = \frac{M_T l}{GI_T}
+					\theta_{\ell} = \frac{M_T \ell}{GI_T}
 				\end{split}
 			}
 		\end{equation}
@@ -2246,7 +2264,183 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 
 		\section{Knickung}
 		\subsection{Verzweigung einer Gleichgewichtslage}
+		\begin{equation}
+			\boxed{
+				\tag{7.1}
+				\begin{split}
+					\Pi' = \frac{\td \Pi}{\td \phi} = 0
+					\rightarrow
+					-F\ell \sin \phi + c_T \phi = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.2}
+				\begin{split}
+					\phi_1 = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.3}
+				\begin{split}
+					\frac{\phi_2}{\sin \phi_2} = \frac{F \ell}{c_T}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.4}
+				\begin{split}
+					\Pi'' = \frac{\td^2 \Pi}{\td \phi^2} = -F\ell \cos \phi + c_T
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.5}
+				\begin{split}
+					F_{\text{krit}} = \frac{c_T}{\ell}
+				\end{split}
+			}
+		\end{equation}
+		
 		\subsection{Der Euler-Stab}
+		\begin{equation}
+			\boxed{
+				\tag{7.6}
+				\begin{split}
+					M = F w
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.7a}
+				\begin{split}
+					EIw'' + Fw = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{abkürzung}
+				\begin{split}
+					\lambda^2 = \nicefrac{F}{EI}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.7b}
+				\begin{split}
+					w'' + \lambda^2w = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.8}
+				\begin{split}
+					w = A\cos \lambda x + B \sin \lambda x
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.9}
+				\begin{split}
+					\sin \lambda \ell = 0 
+					\rightarrow
+					\lambda_n \ell = n \pi
+					\quad \text{mit} \quad
+					n = 1,2,3,...
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.10}
+				\begin{split}
+					F_{\text{krit}} = \lambda^2_1 EI = \pi^2\frac{EI}{\ell^2}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.11}
+				\begin{split}
+					N = const = -F
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.12}
+				\begin{split}
+					\left(EIw''\right)'' + Fw'' = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.13}
+				\begin{split}
+					w^{IV} + \lambda^2w'' = 0
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.14}
+				\begin{split}
+					w = A\cos \lambda x + B \sin \lambda x + C \lambda x + D
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.15}
+				\begin{split}
+					\text{da bin ich jetzt zu faul}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.16}
+				\begin{split}
+					\text{da bin ich jetzt zu faul}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.17}
+				\begin{split}
+					\text{da bin ich jetzt zu faul}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.18}
+				\begin{split}
+					\text{da bin ich jetzt zu faul}
+				\end{split}
+			}
+		\end{equation}
+		\begin{equation}
+			\boxed{
+				\tag{7.19}
+				\begin{split}
+					F_{\text{krit}} = \pi^2\frac{EI_{\text{min}}}{\ell^2_k}
+				\end{split}
+			}
+		\end{equation}
+
 		\subsection{Zusammenfassung}
 	
 		\section{Verbundquerschnitte}
@@ -2255,6 +2449,7 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 		\subsection{Reine Biegung}
 		\subsection{Biegung und Zug/Druck}
 		\subsection{Zusammenfassung}
+	\end{multicols}
 \end{document}
 
 
