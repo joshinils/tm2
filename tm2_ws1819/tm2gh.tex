@@ -54,6 +54,8 @@
 %	Headings and Footings :
 \usepackage{fancyhdr}
 \headheight15pt
+\headsep1pt
+\footskip22pt
 \lhead{Technische Mechanik II, \ueberschrift}
 
 \chead{}
@@ -70,16 +72,28 @@
 
 %----------------------------------------------------------------
 
+% https://tex.stackexchange.com/questions/54492/change-the-bottom-and-top-margin-of-section-and-subsection
+\usepackage[compact]{titlesec}
+
+% Spacing corresponding to `book` class
+% \titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+% \titlespacing*{\subsection} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Spacing before/after reduced by 1ex each
+\titlespacing*{\section}       {0pt}{0.5ex  plus 0ex minus 0.5ex }{0.3ex plus 0ex minus 0.3ex}
+\titlespacing*{\subsection}    {0pt}{0.25ex plus 0ex minus 0.25ex}{0.2ex plus 0ex minus 0.2ex}
+\titlespacing*{\subsubsection} {0pt}{0.25ex plus 0ex minus 0.25ex}{0.2ex plus 0ex minus 0.2ex}
+
 \textwidth16.5cm
 \oddsidemargin0.cm
 \evensidemargin0.cm
 
-\def\somedistanceTop{2cm}
-\def\somedistanceLeft{1cm}
+\def\somedistanceTop{1.1cm}
+\def\somedistanceLeft{.5cm}
 
 \usepackage[]{geometry}
 \geometry{
-	a3paper, landscape,
+	a3paper, %landscape,
 	%	total={170mm,257mm},
 	left=\somedistanceLeft,
 	right=\somedistanceLeft,
@@ -117,27 +131,27 @@
 	\underbrace{#2}_
 	{
 		\parbox
-			{
-				\maxof{\ubwidth}{\numexpr#1}
-			}
-			{
-				\scriptsize\Centering#3
-			}
+		{
+			\maxof{\ubwidth}{\numexpr#1}
+		}
+		{
+			\scriptsize\Centering#3
+		}
 	}
 }
 \newcommand\overbraceWrap[3][0pt]
 {
 	\settowidth\obwidth{$#1$}
 	\overbrace{#2}^
+	{
+		\parbox
 		{
-			\parbox
-				{
 			\maxof{\obwidth}{\numexpr#1}
-				}
-				{
-			\scriptsize\Centering#3
-				}
 		}
+		{
+			\scriptsize\Centering#3
+		}
+	}
 }
 
 %for use in \int
@@ -178,6 +192,10 @@
 \usepackage{varwidth}
 \newcommand{\umrandet}[1]{\pbox{\textwidth}{\boxed{\text{#1}}}}
 
+% https://tex.stackexchange.com/questions/112576/math-mode-in-tabular-without-having-to-use-everywhere
+\usepackage{amstext} % for \text macro
+\usepackage{array}   % for \newcolumntype macro
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
 
 \setlength{\fboxsep}{0pt}
 \usepackage{environ}
@@ -186,7 +204,7 @@
 %	\setlength\FrameSep{\fboxsep}
 %	\begin{framed}\noindent%
 	\colorbox{#1}{
-		\parbox{1.0\linewidth}
+		\parbox{1.0\linewidth-7.3pt}
 		{
 			\begin{shrinkeq}
 				\boxed{
@@ -200,12 +218,31 @@
 	}
 %	\end{framed}
 }
+\NewEnviron{formelAt}[3][white] % green!60!white!50
+{
+%	\setlength\FrameSep{\fboxsep}
+%	\begin{framed}\noindent%
+	\colorbox{#1}{
+		\parbox{1.0\linewidth-7.3pt}
+		{
+			\begin{shrinkeq}
+				\boxed{
+					\tag{#2}
+					\begin{alignat}{#3}
+						\BODY
+					\end{alignat}
+				}
+			\end{shrinkeq}
+		}
+	}
+%	\end{framed}
+}
 
 %\usepackage{showframe}
 % -----------------------------------------------------------
 \begin{document}
-		\abovedisplayskip = 5pt plus 0pt minus 5pt
-		\belowdisplayskip = 5pt plus 0pt minus 5pt
+		\abovedisplayskip = 2pt plus 0pt minus 2pt
+		\belowdisplayskip = 2pt plus 0pt minus 2pt
 		\abovedisplayshortskip = 2pt plus 0pt minus 2pt
 		\belowdisplayshortskip = 2pt plus 0pt minus 2pt
 
@@ -218,23 +255,21 @@
 %	\pagebreak
 	\pagenumbering{arabic}
 
-	\begin{multicols*}{3}
+	\begin{multicols}{3}
 
 		\section{Zug und Druck in Stäben}
 		\subsection{Spannung} % 1.1
-
+		
 		\begin{formel}{1.1}
 			\underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
 			=
 			\frac{\overbrace{N}^{\text{Normalspannung}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
 		\end{formel}
-
 		\begin{formel}{1.2}
 			\underbrace{\sigma}_{\text{Spannung}\left[\frac{N}{mm^2}\right]}
 			=
 			\frac{\overbrace{F}^{\text{Kraft}\left[N\right]}}{\underbrace{A}_{\text{Fläche}\left[mm^2\right]}}
 		\end{formel}
-
 		\begin{formel}{1.3}
 			\sigma
 			=
@@ -246,14 +281,12 @@
 			\frac{\sigma_0}{2}
 			\left(\sin 2 \varphi\right)
 		\end{formel}
-
-		\begin{formel}{1.4}
+		\begin{formel}[green!60!white!50]{1.4}
 			\sigma(x)
 			=
 			\frac{N(x)}{A(x)}
 		\end{formel}
-
-		\begin{formel}{1.5}
+		\begin{formel}[green!60!white!50]{1.5}
 			A_{\text{erf}}
 			=
 			\frac{\abs{N}}{\sigma_{\text{zul}}}
@@ -261,7 +294,7 @@
 
 		\subsection{Dehnung} % 1.2
 
-		\begin{formel}{1.6}
+		\begin{formel}[green!60!white!50]{1.6}
 			\underbrace{\varepsilon}_{\text{Dehnung} \left[1\right]} 
 			=
 			\frac{\overbrace{\Delta \ell}^{\text{Verlängerung}\left[m\right]}}
@@ -272,56 +305,53 @@
 
 		Örtliche (lokale Dehnung)
 
-		\begin{formel}{1.7}
+		\begin{formel}[green!60!white!50]{1.7}
 			\varepsilon(x)
 			=
-			\frac{\text{d}u}
-					 {\text{d}x}
+			\frac{\text{d}u}{\text{d}x}, \quad \abs{\epsilon} \ll 1
 		\end{formel}
 
 		\subsection{Stoffgesetz}
 
-		Hooke'sches Gesetz
-
-		\begin{formel}{1.8}
+		Hooke'sches Gesetz \\
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{1.8}
 			\underbraceWrap[60pt]{E}{Elastizitätsmodul $\left[\frac{N}{mm^2}\right]$}
 			=
 			\frac{\overbrace{\sigma}^{\text{Spannung}\left[\frac{N}{mm^2}\right]}}
 					 {\underbrace{\varepsilon}_{\text{Dehnung}\left[1\right]}}
 		\end{formel}
 
-		Umgestellt nach Sigma, übliche Form:
-		\begin{equation*}
+		Umgestellt nach Sigma, übliche Form:\\
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{andere Form}
 			\sigma
 			=
 			E \varepsilon
 			=
 			\frac{\Delta \ell}{\ell_0} E
-		\end{equation*}
-
+		\end{formel}
 		\begin{formel}{1.9}
 			\underbrace{\varepsilon}_{\text{Dehnung} \left[1\right]}
 			=
 			\frac{\sigma}{E}
 		\end{formel}
-
 		\begin{formel}{1.10}
 			\underbrace{\varepsilon_T}_{\text{Wärmedehnung} \left[1\right]}
 			=
-			\underbraceWrap[110pt]
+			\underbraceWrap[80pt]
 				{\alpha}
 				{
-					Thermischer Ausdehnungskoeffizient (Wärmeausdehnugnskoeffizient)
+					Thermischer Ausdehnungskoeffizient (Wärmeausdehnugns koeffizient)
 					$\left[
 						\nicefrac{1}
 								 {\,^{\circ}\mathrm{C}}
 					\right]$
 				}
 			\cdot
-			\underbrace{\Delta T}_{\text{Temperaturänderung}\left[\,^{\circ}\mathrm{C}\right]}
+			\underbraceWrap[50pt]{\Delta T}{Temperatur änderung $\left[\,^{\circ}\mathrm{C}\right]$}
 		\end{formel}
-
-		\begin{formel}{1.11}
+		\begin{formel}[green!60!white!50]{1.11}
 			\varepsilon
 			=
 			\frac{\sigma}{E}
@@ -329,8 +359,7 @@
 			\alpha_T
 			\Delta T
 		\end{formel}
-
-		\begin{formel}{1.12}
+		\begin{formel}[green!60!white!50]{1.12}
 			\sigma
 			=
 			E
@@ -352,7 +381,6 @@
 			=
 			0
 		\end{formel}
-
 		\begin{formel}{1.14}
 			\frac{\text{d}u}
 					 {\text{d}x}
@@ -361,7 +389,6 @@
 			+
 			\alpha_T \Delta T
 		\end{formel}
-
 		\begin{formel}{1.15}
 			\Delta \ell
 			=
@@ -375,7 +402,7 @@
 		\end{formel}
 		 
 
-		\begin{formel}{1.16}
+		\begin{formel}[green!60!white!50]{1.16}
 			\Delta \ell
 			=
 			\int_{0}^{\ell}
@@ -386,8 +413,7 @@
 			\right)
 			\text{d}x
 		\end{formel}
-
-		\begin{formel}{1.17}
+		\begin{formel}[green!60!white!50]{1.17}
 			\Delta \ell
 			=
 			\frac{F\ell}{EA}
@@ -397,7 +423,7 @@
 
 		Für $\Delta T = 0$
 
-		\begin{formel}{1.18}
+		\begin{formel}[green!60!white!50]{1.18}
 			\Delta \ell
 			=
 			\frac{F\ell}{EA}
@@ -405,12 +431,11 @@
 
 		Oder $F = 0$
 
-		\begin{formel}{1.19}
+		\begin{formel}[green!60!white!50]{1.19}
 			\Delta \ell
 			=
 			\alpha_T \Delta T \ell
 		\end{formel}
-
 		\begin{formel}{1.20a}
 			\left(
 				EA u'
@@ -422,9 +447,9 @@
 				EA \alpha_t \Delta T
 			\right)'
 		\end{formel}
-
-		Sei in 1.20a $EA = const$ und $\Delta T = const$
-
+		\nopagebreak
+		Sei in 1.20a $EA = const$ und $\Delta T = const$\\
+		\nopagebreak
 		\begin{formel}{1.20b}
 			EA u''
 			=
@@ -453,12 +478,12 @@
 
 		\subsection{Statisch unbestimmte Stabsysteme}
 
-		\subsection{Zusammenfassung}
+%		%\subsection{Zusammenfassung}
 
 		\section{Spannungszustand}
 		\subsection{Spannungvektor und Spannungtensor}
 
-		\begin{formel}{2.1}
+		\begin{formel}[green!60!white!50]{2.1}
 			\boldsymbol{t}
 			=
 			\lim_{\Delta A \rightarrow 0}
@@ -466,7 +491,6 @@
 			=
 			\frac{\text{d}\boldsymbol{F}}{\text{d}A}
 		\end{formel}
-
 		\begin{formel}{2.2}
 			\boldsymbol{t}
 			=
@@ -476,13 +500,11 @@
 			+
 			\tau_{yz} \boldsymbol{e_z}
 		\end{formel}
-
-		\begin{formel}{2.3}
+		\begin{formel}[green!60!white!50]{2.3}
 			\tau_{xy} = \tau_{yx},
 			\tau_{xz} = \tau_{zx},
 			\tau_{yz} = \tau_{zy}
 		\end{formel}
-
 		\begin{formel}{2.4}
 			\boldsymbol{\sigma}
 			=
@@ -507,26 +529,17 @@
 			\sigma_{\xi} &= \sigma_x \cos^2 \varphi + \sigma_y \sin^2\varphi + 2 \tau_{xy} \sin\varphi \cos\varphi\\
 			\tau_{\xi \eta} &= -(\sigma_x - \sigma_y) \sin \varphi \cos \varphi + \tau_{xy} (\cos^2\varphi - \sin^2\varphi)
 		\end{formel}
-	 
-
+		\nopagebreak
 		\begin{formel}{2.5b}
 			\sigma_{\eta}
 			=
 			\sigma_{x} \sin^2 \varphi + \sigma_y \cos^2 \varphi - 2 \tau_{xy} \cos\varphi\sin\varphi
 		\end{formel}
-
-		\begin{formel}{green}{bar}
+		\begin{formel}[green!60!white!50]{2.6}
 			\sigma_{\xi} &= \frac{1}{2} (\sigma_x + \sigma_y) +&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi, \\
 			\sigma_{\eta} &= \frac{1}{2} (\sigma_x + \sigma_y) -&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi,\\
 			\tau_{\xi \eta} &= -&\frac{1}{2}(\sigma_x - \sigma_y) \sin 2 \varphi + \tau_{xy} \cos 2 \varphi,
 		\end{formel}
-
-		\begin{formel}{2.6}
-			\sigma_{\xi} &= \frac{1}{2} (\sigma_x + \sigma_y) +&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi, \\
-			\sigma_{\eta} &= \frac{1}{2} (\sigma_x + \sigma_y) -&\frac{1}{2}(\sigma_x - \sigma_y) \cos 2 \varphi + \tau_{xy} \sin 2 \varphi,\\
-			\tau_{\xi \eta} &= -&\frac{1}{2}(\sigma_x - \sigma_y) \sin 2 \varphi + \tau_{xy} \cos 2 \varphi,
-		\end{formel}
-
 		\begin{formel}{2.7}
 			\sigma_\xi + \sigma_\eta
 			=
@@ -540,7 +553,6 @@
 			=
 			\frac{2 \tau_{xy}}{\sigma_x - \sigma_y}
 		\end{formel}
-
 		\begin{formel}{2.9}
 			\cos 2\varphi^\ast
 			&=
@@ -553,8 +565,7 @@
 			&=
 			\frac{2\tau_{xy}}{\sqrt{(\sigma_x - \sigma_y)^2 + 4 \tau_{xy}^2}} \\
 		\end{formel}
-
-		\begin{formel}{2.10}
+		\begin{formel}[green!60!white!50]{2.10}
 			\sigma_{1,2}
 			=
 			\frac{\sigma_x + \sigma_y}{2}
@@ -566,27 +577,24 @@
 				\tau_{xy}^2
 			}
 		\end{formel}
-
 		\begin{formel}{2.11}
 			\tan 2\varphi^{\ast\ast}
 			=
 			-\frac{\sigma_x - \sigma_y}{2 \tau_{xy}}
 		\end{formel}
-
-		\begin{formel}{2.12a}
+		\begin{formel}[green!60!white!50]{2.12a}
 			\tau_{\text{max}}
 			=
 			\pm
 			\sqrt{(\frac{\sigma_x - \sigma_y}{2})^2 + \tau_{xy}^2}
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{2.12b}
 			\tau_{\text{max}}
 			=
 			\pm
 			\frac{1}{2}(\sigma_1 -\sigma_2)
 		\end{formel}
-
 		\begin{formel}{2.13}
 			\sigma_M
 			=
@@ -605,7 +613,6 @@
 			&=
 			- \frac{1}{2}(\sigma_x - \sigma_y) \sin 2 \varphi + \tau_{xy} \cos 2\varphi
 		\end{formel}
-
 		\begin{formel}{2.15}
 			\left[\sigma_\xi - \frac{1}{2} (\sigma_x + \sigma_y)\right]^2
 			+
@@ -617,7 +624,6 @@
 			+
 			\tau_{xy}^2
 		\end{formel}
-
 		\begin{formel}{2.16}
 			\left(\sigma - \sigma_M\right)^2
 			+
@@ -625,7 +631,6 @@
 			=
 			r^2
 		\end{formel}
-
 		\begin{formel}{2.17}
 			r^2
 			=
@@ -639,20 +644,18 @@
 
 		\subsubsection{Dünnwandiger Kessel}
 
-		\begin{formel}{2.18}
+		\begin{formel}[green!60!white!50]{2.18}
 			\sigma_x
 			=
 			\frac{1}{2} \,p\, \frac{r}{t}
 		\end{formel}
-
-		\begin{formel}{2.19}
+		\begin{formel}[green!60!white!50]{2.19}
 			\sigma_{\varphi}
 			=
 			p\,
 			\frac{r}{t}
 		\end{formel}
-
-		\begin{formel}{2.20}
+		\begin{formel}[green!60!white!50]{2.20}
 			\sigma_t
 			=
 			\sigma_\varphi
@@ -671,7 +674,7 @@
 			=
 			0
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{2.21b}
 			\frac{\partial\tau_{xy}}{\partial x}
 			+
@@ -681,7 +684,6 @@
 			=
 			0
 		\end{formel}
-
 		\begin{formel}{2.22}
 			\frac{\partial\sigma_{x}}{\partial x}
 			+
@@ -706,7 +708,7 @@
 			f_z\!&= 0 \\
 		\end{formel}
 
-		\subsection{Zusammenfassung}
+%		%\subsection{Zusammenfassung}
 
 		\section{Verzerrungszustand, Elastizitätsgesetze}
 		\subsection{Verzerrungszustand}
@@ -719,7 +721,6 @@
 			=
 			\frac{\partial v}{\partial y}				 
 		\end{formel}
-
 		\begin{formel}{3.2}
 			\gamma_{xy}
 			=
@@ -727,35 +728,30 @@
 			+
 			\frac{\partial v}{\partial x}
 		\end{formel}
-
-		\begin{formel}{3.3}
-			\times
-		\end{formel}
-
+%		\begin{formel}{3.3}
+%			\times
+%		\end{formel}
 		\begin{formel}{3.4}
 			\tan 2\varphi^\ast
 			=
 			\frac{\gamma_{xy}}{\varepsilon_x -\varepsilon_y}
 		\end{formel}
-
 		\begin{formel}{3.5}
 			\epsilon_{1,2} = \frac{\epsilon_x + \epsilon_y}{2}
 			\pm
 			\sqrt{\left( \frac{\epsilon_x - \epsilon_y}{2}\right) + \left( \frac{1}{2} \gamma_{xy} \right) }
 		\end{formel}
-
 		\begin{formel}{3.6a}
 			\epsilon_x = \frac{\partial u}{\partial x}, \quad
 			\epsilon_y = \frac{\partial v}{\partial y}, \quad
 			\epsilon_z = \frac{\partial w}{\partial z}, \quad
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{3.6b}
 			\gamma_{xy} = \frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}, \quad
 			\gamma_{xz} = \frac{\partial u}{\partial z} + \frac{\partial w}{\partial x}, \quad
 			\gamma_{yz} = \frac{\partial v}{\partial z} + \frac{\partial w}{\partial y}, \quad
 		\end{formel}
-
 		\begin{formel}{3.7}
 			\mathbf{\epsilon}
 			=
@@ -777,20 +773,16 @@
 		\begin{formel}{3.8}
 			\varepsilon_y = -\nu \varepsilon_x
 		\end{formel}
-
 		\begin{formel}{3.9}
 			\varepsilon_x = \frac{1}{E} \left( \sigma_x - \nu\sigma_y \right), 
 			\varepsilon_y = \frac{1}{E} \left( \sigma_y - \nu\sigma_x \right)
 		\end{formel}
-
-		\begin{formel}{3.10}
+		\begin{formel}[green!60!white!50]{3.10}
 			\tau_{xy} = G \gamma_{xy}
 		\end{formel}
-
 		\begin{formel}{3.11}
 			G = \frac{E}{2\left(1+\eta\right)}
 		\end{formel}
-
 		\begin{formel}{3.12a}
 			\varepsilon_x &= \frac{1}{E}\left(\sigma_x - \nu \sigma_y\right)
 			\\
@@ -798,17 +790,15 @@
 			\\
 			\gamma_{xy} &= \frac{1}{G}\tau_{xy}
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{3.12b}
 			\sigma_x &= \frac{E}{1 - \nu^2}(\epsilon_x + \nu \epsilon_y) \\
 			\sigma_y &= \frac{E}{1 -\nu^2}(\epsilon_y - \nu \epsilon_x) \\
 			\tau_{xy} &= G \gamma_{xy}
 		\end{formel}
-
 		\begin{formel}{3.13}
 			\epsilon_1 = \frac{1}{E}(\sigma_1 -\nu\sigma_2), \quad \epsilon_2 = \frac{1}{E}(\sigma_2 -\nu\sigma_1)
 		\end{formel}
-
 		\begin{formel}{3.14}
 			\varepsilon_x &= \frac{1}{E}\left[\sigma_x -\nu   \left(\sigma_y + \sigma_z\right)\right] + \alpha_T\Delta T
 			\\
@@ -822,46 +812,38 @@
 		\begin{formel}{3.15}
 			\sigma_V \leq \sigma_{zul}
 		\end{formel}
-
 		\begin{formel}{3.16}
 			\sigma_V= \sigma_1
 		\end{formel}
-
 		\begin{formel}{3.17}
 			\sigma_V= \sqrt{ \left( \sigma_x - \sigma_y \right)^2 + 4\tau^2_{xy} }
 		\end{formel}
-
 		\begin{formel}{3.18}
 			\sigma_V= \sqrt{\sigma_x^2 + \sigma_y^2 -\sigma_x\sigma_y + 3\tau^2_{xy} }
 		\end{formel}
 
-		\subsection{Zusammenfassung}
+%		%\subsection{Zusammenfassung}
 
 		\section{Balkenbiegung}
 		\subsection{Einführung}
-
 		\begin{formel}{4.1}
 			\sigma(z) = c z
 		\end{formel}
-
 		\begin{formel}{4.2}
 			M = \int{z\sigma \; \text{d}A}
 		\end{formel}
-
 		\begin{formel}{4.3}
 			I = \int z^2 \td A
 		\end{formel}
-
 		\begin{formel}{4.4}
 			\sigma = \frac{M}{I} z
 		\end{formel}
-
+\pagebreak[0]
 		\subsection{Flächenträgheitsmomente}
 		\subsubsection{Definition}
 
-		Das statische Moment ist quasi Fläche $\times$ Hebelarm bezogen auf den Schwerpunkt der Fläche:
-
-		\begin{formel}{4.5}
+		Das statische Moment ist quasi Fläche $\times$ Hebelarm bezogen auf den Schwerpunkt der Fläche:\\\nopagebreak
+		\begin{formel}[green!60!white!50]{4.5}
 			S_y
 			=
 			\int z \text{d} A, \quad
@@ -869,8 +851,7 @@
 			=
 			\int y \text{d} A
 		\end{formel}
-
-		\begin{formel}{4.6a}
+		\begin{formel}[green!60!white!50]{4.6a}
 			I_y
 			=
 			\int
@@ -880,18 +861,18 @@
 			\int
 			y^2\text{d}A
 		\end{formel}
-
-		\begin{formel}{4.6b}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{4.6b}
 			I_{yz} = I_{zy} = -\!\int\! y z\, \text{d}A
 		\end{formel}
-
-		\begin{formel}{4.6c}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{4.6c}
 			I_p = \int r^2 \,\text{d}A = \int\! \left( z^2 + y^2  \right)\,\text{d}A = I_y + I_z
 		\end{formel}
-
-		\begin{formel}{4.7}
-			i = seltsame Wurzel; 
-			\times
+		\begin{formel}[green!60!white!50]{4.7}
+			i_y = \sqrt{ \frac{I_y}{A} }, \quad 
+			i_z = \sqrt{ \frac{I_z}{A} }, \quad
+			i_p = \sqrt{ \frac{I_p}{A} }
 		\end{formel}
 
 %		\begin{equation}
@@ -991,15 +972,24 @@
 %%			\times
 %				\end{split}
 %			}
-%		\end{equation}
+%		\end{equation}	
 
 		\subsubsection{Parallelverschiebung der Bezugsachsen}
 
-		\begin{formel}{4.13}
+		\begin{formel}[green!60!white!50]{4.13}
 			I_{\bar{y}} &= I_y + \bar{z}^2_s A\\
 			I_{\bar{z}} &= I_z + \bar{y}^2_s A\\
 			I_{\bar{y} \bar{z}} &= I_{yz} - \bar{y}_{s} \bar{z}_{s} A
 		\end{formel}
+
+		$I_y$ ist das Flächenträgheitsmoment der zusammengesetzten Fläche,
+		$I_{\bar{y}}$ das von jeder einzelnen, 
+		$\bar{z}_s$ ist der Abstand des Schwerpunktes der Einzelflächen zur GesamtAchse $y$ und
+		$A$ ist der jewilige Flächeninhalt.\\ \nopagebreak
+		\begin{formel}[green!60!white!50]{Satz v. Steiner}
+			I_y = \sum I_{\bar{y}} + \bar{z}^2_s A
+		\end{formel}
+
 
 		\subsubsection{Drehung des Bezugssystems, Hauptträgheitsmomente}
 
@@ -1008,16 +998,13 @@
 			I_{\zeta} &= \frac{1}{2}\left( I_y - I_z \right)&-\frac{1}{2}(I_y-I_z)\cos{2\varphi} -I_{yz}\sin{2\varphi}\\
 			I_{\eta \zeta} &=  &-\frac{1}{2}\left( I_y - I_z \right)\sin{2\varphi} + I_{yz}\cos{2\varphi}
 		\end{formel}
-
 		\begin{formel}{4.15}
 			I_{\eta} + I_{\zeta} = I_y + I_z = I_p
 		\end{formel}
-
-		\begin{formel}{4.16}
+		\begin{formel}[green!60!white!50]{4.16}
 			\tan{2\varphi^*} = \frac{2 I_{yz}}{I_y - I_z}
 		\end{formel}
-
-		\begin{formel}{4.17}
+		\begin{formel}[green!60!white!50]{4.17}
 			I_{1,2} = \frac{I_y + I_z}{2}
 			\pm
 			\sqrt{\left(\frac{I_y - I_z}{2}\right)^2 + I_{yz}^2}
@@ -1025,71 +1012,63 @@
 
 		\subsection{Grundgleichungen der geraden Biegung}
 
-		\begin{formel}{4.18}
+		\begin{formel}[green!60!white!50]{4.18}
 			\frac{\text{d}Q}{\text{d}x} = -q,\quad \frac{\text{d}M}{\text{d}x} = Q
 		\end{formel}
-
-		\begin{formel}{4.19a}
+		\begin{formel}[green!60!white!50]{4.19a}
 			M = \int z \sigma \td A
 		\end{formel}
-
-		\begin{formel}{4.19b}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{4.19b}
 			Q = \int \tau \td A
 		\end{formel}
-
-		\begin{formel}{4.19c}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{4.19c}
 			N = \int \sigma \td A
 		\end{formel}
-
 		\begin{formel}{4.20}
 			\epsilon = \frac{\partial u}{\partial x}
 		\end{formel}
-
 		\begin{formel}{4.21}
 			\sigma= E\,\epsilon, \quad \tau = G\,\gamma
 		\end{formel}
-
 		\begin{formel}{4.22a}
 			w = w(x)
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{4.22b}
 			u(x,z) = \psi(x)z
 		\end{formel}
-
 		\begin{formel}{4.23a}
 			\sigma = E\frac{\partial u}{\partial x} = E \psi' z
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{4.23b}
 			\tau = G\left( \frac{\partial w}{\partial x} + \frac{\partial u}{\partial z} \right) = G (w' + \psi)
 		\end{formel}
-
-		\begin{formel}{4.24}
+		\begin{formel}[green!60!white!50]{4.24}
 			M = E I \psi'
 		\end{formel}
-
 		\begin{formel}{4.25}
 			Q = \varkappa GA(w' +\psi)
 		\end{formel}
 
 		\subsection{Normalspannungen}
 
-		\begin{formel}{4.26}
+		\begin{formel}[green!60!white!50]{4.26}
 			\sigma
 			=
 			\frac{M}{I}
 			z
 		\end{formel}
-
-		\begin{formel}{4.27}
+		\begin{formel}[green!60!white!50]{4.27}
 			W
 			=
 			\frac{I}{\abs{z}_{\text{max}}}
 		\end{formel}
 		Aber hier mit subscript, also $\displaystyle W_{\text{Achse}} = \frac{I_{\text{Achse}}}{\abs{\text{andere Achse}}_{\text{max}}}$
 
-		\begin{formel}{4.28}
+		\begin{formel}[green!60!white!50]{4.28}
 			\sigma_{\text{max}}
 			=
 			\frac{\abs{M}}{W}
@@ -1101,41 +1080,36 @@
 		\begin{formel}{4.29}
 			w' + \psi = 0
 		\end{formel}
-
-		\begin{formel}{4.30}
+		\begin{formel}[green!60!white!50]{4.30}
 			Q' = -q,\quad M' = Q, \quad \psi' = \frac{M}{E I}, \quad w' = -\psi
 		\end{formel}
-
-		\begin{formel}{4.31}
+		\begin{formel}[green!60!white!50]{4.31}
 			w'' = -\frac{M}{E I}
 		\end{formel}
-
 		\begin{formel}{4.32a}
 			\varkappa_B = \frac{w''}{(1 + w'^2)^{\nicefrac{3}{2}} }
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{4.32b}
 			\varkappa_B\approx w''
 		\end{formel}
-
 		\begin{formel}{4.33}
 			Q = -(E I w'')'
 		\end{formel}
-
-		\begin{formel}{4.34a}
+		\begin{formel}[green!60!white!50]{4.34a}
 			(E I w'')'' = q
 		\end{formel}
-
-		\begin{formel}{4.34b}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{4.34b}
 			EI w^{I V} = q
 		\end{formel}
 
 		\subsubsection{Einfeldbalken}
 		\subsubsection{Balken mit mehreren Feldern}
 
-		Balken mit zwei Feldern. Eingespannt rechts und links, krafteinwirkung dazwischen, bei $a$. 
-
-		\begin{formel}{Momentenverlauf}
+		Balken mit zwei Feldern. Eingespannt rechts und links, krafteinwirkung dazwischen, bei $a$. \\
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{Momentenverlauf}
 			M(x) = 
 			\begin{cases}
 				F\frac{b}{\ell}x &\text{für} \, 0 \leq x \leq a\\
@@ -1150,12 +1124,10 @@
 		\begin{formel}{4.35}
 			\frac{\partial \sigma}{\partial x} = \frac{Q}{I} \zeta
 		\end{formel}
-
-		\begin{formel}{4.36}
+		\begin{formel}[green!60!white!50]{4.36}
 			S(z) = \int\limits_{A^*} \zeta \td A
 		\end{formel}
-
-		\begin{formel}{4.37}
+		\begin{formel}[green!60!white!50]{4.37}
 			\underbrace{\tau(z)}_{\nicefrac{N}{mm^2}} = \frac{\overbrace{Q}^{[N]}\overbrace{S(z)}^{mm^3}}{\underbrace{I}_{mm^4}\underbrace{b(z)}_{mm}}
 		\end{formel}
 
@@ -1164,19 +1136,15 @@
 		\begin{formel}{4.40}
 			w' + \psi = \frac{Q}{GA_S}
 		\end{formel}
-
 		\begin{formel}{4.41}
 			w_s' = \frac{Q}{GA_S}
 		\end{formel}
-
 		\begin{formel}{4.42}
 			w' = w_B' + w_S'
 		\end{formel}
-
 		\begin{formel}{4.43}
 			w = w_B + w_S
 		\end{formel}
-
 		\begin{formel}{4.44}
 			w_S= \frac{F}{GA_S}x
 		\end{formel}
@@ -1186,102 +1154,86 @@
 		\begin{formel}{4.45}
 			\sigma = \frac{M_y}{I_y}z - \frac{M_z}{I_z}y
 		\end{formel}
-
 		\begin{formel}{4.46}
 			w'' = \frac{M_y}{EI_y} , \quad \nu '' = \frac{M_z}{EI_z}
 		\end{formel}
-
 		\begin{formel}{4.47}
 			\frac{\td Q_z}{\td x} = -q_z, \quad \frac{\td Q_y}{\td x} &= -q_y\\
 			\frac{\td M_y}{\td x} = Q_z, \quad \frac{\td M_z}{\td x} &= -Q_y
 		\end{formel}
-
 		\begin{formel}{4.48}
 			\epsilon = -\left(w'' z + \nu'' y\right)
 		\end{formel}
-
 		\begin{formel}{4.49}
 			\sigma = -E\left(w'' z + \nu'' y\right)
 		\end{formel}
-
 		\begin{formel}{4.50}
 			M_y = \int z\sigma\td A , \quad M_z = - \int y \sigma \td A
 		\end{formel}
-
-		\begin{formel}{4.51}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.52}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.53a}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.53b}
-			\times
-		\end{formel}
-
+%		\begin{formel}{4.51}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.52}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.53a}
+%			\times
+%		\end{formel}
+%		\nopagebreak
+%		\begin{formel}{4.53b}
+%			\times
+%		\end{formel}
+%
 		\subsection{Biegung und Zug/Druck}
 
-		\begin{formel}{4.54a}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.54b}
-			\times
-		\end{formel}
-
+%		\begin{formel}{4.54a}
+%			\times
+%		\end{formel}
+%		\nopagebreak
+%		\begin{formel}{4.54b}
+%			\times
+%		\end{formel}
+%
 		\subsection{Kern des Querschnitts}
 
-		\begin{formel}{4.55}
-			\times
-		\end{formel}
+%		\begin{formel}{4.55}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.56}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.57}
+%			\times
+%		\end{formel}
 
-		\begin{formel}{4.56}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.57}
-			\times
-		\end{formel}
 		\subsection{Temperaturbelastung}
 
-		\begin{formel}{4.58}
-			\times
-		\end{formel}
+%		\begin{formel}{4.58}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.59}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.60}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.61}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.62}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.63}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.64}
+%			\times
+%		\end{formel}
+%		\begin{formel}{4.65}
+%			\times
+%		\end{formel}
 
-		\begin{formel}{4.59}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.60}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.61}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.62}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.63}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.64}
-			\times
-		\end{formel}
-
-		\begin{formel}{4.65}
-			\times
-		\end{formel}
-
-		\subsection{Zusammenfassung}
+		%\subsection{Zusammenfassung}
 
 		\section{Torsion}
 		\subsection{Einführung}
@@ -1295,18 +1247,12 @@
 		\begin{formel}{5.2}
 			\tau = G r \frac{\td \theta}{\td x} = G r \theta'
 		\end{formel}
-
 		\begin{formel}{5.3}
 			M_T = \int r\theta \td A
 		\end{formel}
-
 		\begin{formel}{5.4}
 			M_T = G\theta' \displaystyle\int r^2 \td A = G \theta' I_p
 		\end{formel}
-
-		\[\int\]
-		$\int $
-
 		\begin{formel}{5.5}
 			GI_T \theta' = M_T
 		\end{formel}
@@ -1315,11 +1261,9 @@
 		\begin{formel}{5.6}
 			M_T = M_x
 		\end{formel}
-
 		\begin{formel}{5.7}
 			\theta_{\ell} = \frac{M_T \ell}{GI_T}
 		\end{formel}
-
 		\begin{formel}{5.8}
 			\tau = \frac{M_T}{I_T}r
 		\end{formel}
@@ -1330,26 +1274,21 @@
 die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstandsmoment} $ W_T $ ein:
 		\nopagebreak
 
-		\begin{formel}{5.9}
+		\begin{formel}[green!60!white!50]{5.9}
 			\tau_{\text{max}} = \frac{M_T}{W_T}
 		\end{formel}
-
 		\begin{formel}{5.10}
 			I_t = I_P = \frac{\pi}{2} R^4, \quad W_T = \frac{\pi}{2}R^3
 		\end{formel}
-
 		\begin{formel}{5.11}
 			I_T = \frac{\pi}{2} \left( R^4_a - R^4_i \right), \quad W_T = \frac{\pi}{2}\frac{R^4_a -R_i^4}{R_a}
 		\end{formel}
-
 		\begin{formel}{5.12}
 			I_T \approx 2 \pi R^3_m t \quad W_T \approx 2 \pi R^2_m t
 		\end{formel}
-
 		\begin{formel}{5.13}
 			\frac{\td M_T}{\td x} = M'_T = -m_T
 		\end{formel}
-
 		\begin{formel}{5.14}
 			\left( GI_T \theta' \right)' = -m_T
 		\end{formel}
@@ -1359,86 +1298,70 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 		\begin{formel}{5.15}
 			T = \tau t
 		\end{formel}
-
 		\begin{formel}{5.16}
 			T = \tau t = \text{const}
 		\end{formel}
-
 		\begin{formel}{5.17}
 			M_T = \oint \td M_T = T \oint r \perp\td s
 		\end{formel}
-
 		\begin{formel}{5.18}
 			\oint r \perp \td s = 2 A_m
 		\end{formel}
-
 		\begin{formel}{5.19}
 			M_T = 2A_m T
 		\end{formel}
-
-		\begin{formel}{5.20}
+		1. Bredtsche Formel\\
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{5.20}
 			\tau = \frac{T}{t} = \frac{M_T}{2 A_m t}
 		\end{formel}
-
 		\begin{formel}{5.21}
 			\tau_{\text{max}} = \frac{M_T}{W_T} \quad \text{mit} \quad W_T = 2 A_m t_{\text{min}}
 		\end{formel}
-
 		\begin{formel}{5.22}
 			\td \nu = r \perp \td \theta
 		\end{formel}
-
 		\begin{formel}{5.23}
 			\frac{T}{G t} = r \perp \theta' + \frac{\partial u}{\partial s}
 		\end{formel}
-
 		\begin{formel}{5.24}
 			\theta' = \frac{M_T}{GI_T}
 		\end{formel}
-
 		\begin{formel}{5.25}
 			I_T = \frac{\left( 2 A_m\right)^2}{\oint\frac{\td s}{t}}
 		\end{formel}
-
-		\begin{formel}{5.26}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.27}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.28}
-			\times
-		\end{formel}
+%		\begin{formel}{5.26}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.27}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.28}
+%			\times
+%		\end{formel}
 
 		\subsection{Dünnwandige offene Profile}
 
-		\begin{formel}{5.29}
-			\times
-		\end{formel}
+%		\begin{formel}{5.29}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.30}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.31}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.32}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.33}
+%			\times
+%		\end{formel}
+%		\begin{formel}{5.34}
+%			\times
+%		\end{formel}
 
-		\begin{formel}{5.30}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.31}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.32}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.33}
-			\times
-		\end{formel}
-
-		\begin{formel}{5.34}
-			\times
-		\end{formel}
-
-		\subsection{Zusammenfassung}
+		%\subsection{Zusammenfassung}
 
 		\setcounter{section}{6}
 		%\section{Der Arbeitsbegriff in der Elastostatik}
@@ -1457,19 +1380,15 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 			\rightarrow
 			-F\ell \sin \phi + c_T \phi = 0
 		\end{formel}
-
 		\begin{formel}{7.2}
 			\phi_1 = 0
 		\end{formel}
-
 		\begin{formel}{7.3}
 			\frac{\phi_2}{\sin \phi_2} = \frac{F \ell}{c_T}
 		\end{formel}
-
 		\begin{formel}{7.4}
 			\Pi'' = \frac{\td^2 \Pi}{\td \phi^2} = -F\ell \cos \phi + c_T
 		\end{formel}
-
 		\begin{formel}{7.5}
 			F_{\text{krit}} = \frac{c_T}{\ell}
 		\end{formel}
@@ -1479,23 +1398,20 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 		\begin{formel}{7.6}
 			M = F w
 		\end{formel}
-
 		\begin{formel}{7.7a}
 			EIw'' + Fw = 0
 		\end{formel}
-
-		\begin{formel}{abkürzung}
-			\lambda^2 = \nicefrac{F}{EI}
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{abkürzung}
+			\lambda = \frac{\pi}{\ell_k},\quad \lambda^2 = \nicefrac{F}{EI}
 		\end{formel}
-
+		\nopagebreak
 		\begin{formel}{7.7b}
 			w'' + \lambda^2w = 0
 		\end{formel}
-
 		\begin{formel}{7.8}
 			w = A\cos \lambda x + B \sin \lambda x
 		\end{formel}
-
 		\begin{formel}{7.9}
 			\sin \lambda \ell = 0 
 			\rightarrow
@@ -1503,56 +1419,79 @@ die Analogie zur Biegung herzustellen, führen wir ein \textit{Torsionswiderstan
 			\quad \text{mit} \quad
 			n = 1,2,3,...
 		\end{formel}
-
 		\begin{formel}{7.10}
 			F_{\text{krit}} = \lambda^2_1 EI = \pi^2\frac{EI}{\ell^2}
 		\end{formel}
-
 		\begin{formel}{7.11}
 			N = const = -F
 		\end{formel}
-
 		\begin{formel}{7.12}
 			\left(EIw''\right)'' + Fw'' = 0
 		\end{formel}
-
 		\begin{formel}{7.13}
 			w^{IV} + \lambda^2w'' = 0
 		\end{formel}
-
 		\begin{formel}{7.14}
 			w = A\cos \lambda x + B \sin \lambda x + C \lambda x + D
 		\end{formel}
-
-		\begin{formel}{7.15}
-			\times
-		\end{formel}
-
-		\begin{formel}{7.16}
-			\times
-		\end{formel}
-
-		\begin{formel}{7.17}
-			\times
-		\end{formel}
-
-		\begin{formel}{7.18}
-			\times
-		\end{formel}
-
-		\begin{formel}{7.19}
+%		\begin{formel}{7.15}
+%			\times
+%		\end{formel}
+%		\begin{formel}{7.16}
+%			\times
+%		\end{formel}
+%		\begin{formel}{7.17}
+%			\times
+%		\end{formel}
+%		\begin{formel}{7.18}
+%			\times
+%		\end{formel}
+	
+		
+		$\lambda_k = \ell_k \scdot \sqrt{\frac{A}{I}} = \frac{\ell_k}{i}$\\
+		\nopagebreak
+		\begin{formel}[green!60!white!50]{7.19}
 			F_{\text{krit}} = \pi^2\frac{EI_{\text{min}}}{\ell^2_k}
 		\end{formel}
 
-		\subsection{Zusammenfassung}
+%		%\subsection{Zusammenfassung}
 
 %		\section{Verbundquerschnitte}
 %		\subsection{Einleitung}
 %		\subsection{Zug und Druck in Stäben}
 %		\subsection{Reine Biegung}
 %		\subsection{Biegung und Zug/Druck}
-%		\subsection{Zusammenfassung}
-	\end{multicols*}
+%%		%\subsection{Zusammenfassung}
+	\end{multicols}
+
+	\begin{figure}[H]
+		\includegraphics[width=.5\linewidth]{euler.png}
+	\end{figure}
+
+
+	\arraycolsep=2pt
+	\def\arraystretch{2}	
+	%\rotatebox{90}
+	{
+		\colorbox{green!60!white!50}
+		{
+			\begin{equation*}
+				%\tag{Flächenträgheitsmomente}
+				\begin{array}{|l|*5{>{\displaystyle}c|}}
+					\hline 
+					\text{Fläche}                                    &               I_y                            &                                        I_z &                                I_{yz} &                                    I_p          & I_{\bar{y}} \\ \hline 
+					\text{Rechteck}                                  &   \frac{bh^3}{12}                            &                            \frac{hb^3}{12} &                                     0 & \frac{bh}{12} \left( h^2 + b^2 \right)          & \frac{bh^3}{3} \\ \hline 
+	%				Quadrat &  &  &  &  &  \\ \hline   
+					\text{\parbox{1.5cm}{Dreieck \underline{BILD}}}    &   \frac{bh^3}{36}                            & \frac{bh}{36}\left( b^2 -ba + a^2 \right)  & -\frac{bh^2}{72}\left( b - 2a \right) & \frac{bh}{36}\left( h^2 + b^2 -ba + a^2 \right) & \frac{bh^3}{12} \\ \hline 
+					\text{Kreis}                                     & \frac{\pi R^4}{4}                            &                          \frac{\pi R^4}{4} &                                     0 &                               \frac{\pi R^4}{2} & \frac{5 \pi}{4}R^4 \\ \hline 
+					\text{\parbox{1.7cm}{Dünner Kreisring $t\ll R_m$}} &       \pi R^3_m t                            &                                \pi R^3_m t &                                     0 &                                    2\pi R^3_m t & 3\pi R^3_m t \\ \hline 
+					\text{Halbkreis}                                 & \frac{R^4}{72 \pi}\left( 9 \pi^2 -64 \right) &                          \frac{\pi R^4}{8} &                                     0 &    \frac{R^4}{36 \pi}\left( 9 \pi^2 -32 \right) & \frac{\pi R^4}{8} \\ \hline 
+					\text{Ellipse}                                   & \frac{\pi}{4}ab^3                            &                          \frac{\pi}{4}ba^3 &                                     0 &        \frac{\pi ab}{4}\left( a^2 + b^2 \right) & \frac{5\pi}{4}ab^3 \\ \hline 
+				\end{array}
+			\end{equation*}
+		}
+	}
+
 \end{document}
 
 
